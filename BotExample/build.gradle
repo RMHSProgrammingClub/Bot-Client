@@ -1,0 +1,14 @@
+group 'BotGame'
+version 'unspecified'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('../ClientApi/build/libs/ClientApi.jar')
+}
