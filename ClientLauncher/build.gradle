@@ -10,7 +10,15 @@ repositories {
 }
 
 dependencies {
-    compile files('../ClientApi/build/libs/ClientApi.jar')
+    compile files('../BotGame/libs/ReflectionHelper-1.0.4.jar')
+    compile files('../BotGame/libs/ClientApi.jar')
+    compile files('../BotGame/libs/NetworkCore.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'github.rmhsprogrammingclub.game.clientlauncher.ClientLauncher'
+    }
 }
 
 gradle.taskGraph.afterTask { Task task, TaskState state ->

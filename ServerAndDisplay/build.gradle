@@ -11,3 +11,14 @@ repositories {
 
 dependencies {
 }
+
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+//    if the build succeeded
+    if (!state.failure && task.name.equalsIgnoreCase('build')) {
+//        copy the jar into the distro directory
+        copy {
+            from('build/libs/' + project.getName() + '.jar')
+            into('../BotGame/libs/')
+        }
+    }
+}

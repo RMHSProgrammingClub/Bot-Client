@@ -10,7 +10,6 @@ repositories {
 }
 
 dependencies {
-    compile files('../ClientApi/build/libs/ClientApi.jar')
 }
 
 gradle.taskGraph.afterTask { Task task, TaskState state ->
@@ -19,7 +18,8 @@ gradle.taskGraph.afterTask { Task task, TaskState state ->
 //        copy the jar into the distro directory
         copy {
             from('build/libs/' + project.getName() + '.jar')
-            into('../BotGame/')
+            into('../BotGame/libs/')
         }
     }
 }
+
