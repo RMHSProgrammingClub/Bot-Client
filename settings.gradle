@@ -4,4 +4,5 @@ include 'ClientApi'
 include 'BotExample'
 include 'NetworkingCore'
 include 'ClientLauncher'
+include 'ServerLauncher'
 
