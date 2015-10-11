@@ -1,52 +1,59 @@
 package github.rhmsprogrammingclub.game.display;
 
-import github.rhmsprogrammingclub.game.display.graphics.Screen;
+import com.n9mtq4.patternimage.PatternImage;
+import com.n9mtq4.patternimage.example.Example;
+import com.n9mtq4.patternimage.ui.PatternImageContainer;
 import github.rhmsprogrammingclub.game.game.Level;
 import github.rhmsprogrammingclub.game.server.Server;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /**
  * Created by will on 10/6/15 at 3:24 PM.
  *
  * @author Will "n9Mtq4" Bresnahan
  */
-public class GameDisplay extends Canvas implements Runnable {
+public class GameDisplay implements Runnable {
 	
 	public static final int WIDTH = 360;
 	public static final int HEIGHT = (WIDTH / 4) * 3; //smartboards are 4:3, right?
 	public static final int SCALE = 2;
-	public static final double GAME_SPEED = 60d; // ticks per second
+	public static final double GAME_SPEED = 16d; // ticks per second
 	public static final boolean DEBUG = true;
-	private static final Font DEBUG_FONT = new Font("Verdana", Font.BOLD, 24);
-	private static final Font NORMAL_FONT = new Font("Verdana", Font.BOLD, 12);
 	
 	private final Server server;
 	
-	private Screen screen;
+	private JFrame frame;
+	
+	private PatternImage screen;
+	private PatternImageContainer screenRender;
 	private Level level;
 	
 	private Thread thread;
 	private boolean running;
-	private int fps;
-	
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
 	public GameDisplay(Server server) {
+		
 		this.server = server;
 		this.running = false;
-		final Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
-		setPreferredSize(size);
 		
-		requestFocus();
+		this.level = new Level(WIDTH, HEIGHT);
+		this.screen = new PatternImage(WIDTH, HEIGHT);
+		this.screenRender = new PatternImageContainer(screen, DEBUG, GAME_SPEED, SCALE);
+		
+		this.frame = new JFrame("Game Window");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		frame.add(screenRender);
+		
+		frame.pack();
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		
+		initScreen();
+		start();
 		
 	}
 	
@@ -71,38 +78,9 @@ public class GameDisplay extends Canvas implements Runnable {
 		
 	}
 	
-	private void renderGame() {
-		
-		BufferStrategy bs = this.getBufferStrategy();
-		if (bs == null) {
-			createBufferStrategy(2);
-			return;
-		}
-		
-		screen.clear();
-		level.render(screen);
-		
-		for (int i = 0; i < pixels.length; i++) {
-			pixels[i] = screen.pixels[i];
-		}
-		Graphics g = bs.getDrawGraphics();
-		g.setColor(Color.BLACK);
-		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-		
-		if (DEBUG) {
-			g.setColor(new Color(255, 255, 0));
-			g.setFont(DEBUG_FONT);
-			g.drawString(fps + " fps", 0, HEIGHT * SCALE - 18);
-			g.setFont(NORMAL_FONT);
-		}
-		
-		g.dispose();
-		bs.show();
-		
-	}
-	
-	private void render() {
-		renderGame();
+	private void initScreen() {
+		screen.setBackground(new Example.AnimatedRadialGradient());
+		screenRender.start();
 	}
 	
 	private void tick() {
@@ -124,8 +102,8 @@ public class GameDisplay extends Canvas implements Runnable {
 		int tickCount = 0;
 		boolean ticked = false;
 		
-		requestFocus();
-		requestFocusInWindow();
+		frame.requestFocus();
+		screenRender.requestFocusInWindow();
 		tick();
 		while (running) {
 			
@@ -145,7 +123,6 @@ public class GameDisplay extends Canvas implements Runnable {
 					
 					System.out.println(tickCount + " ups, " + frames + " fps");
 					previousTime += 1000;
-					fps = frames;
 					frames = 0;
 					tickCount = 0;
 					
@@ -153,16 +130,7 @@ public class GameDisplay extends Canvas implements Runnable {
 				
 			}
 			
-			if (ticked) {
-				
-				render();
-				frames++;
-				ticked = false;
-				
-			}
-			
-			render();
-			frames++;
+			if (ticked) ticked = false;
 			
 		}
 		
@@ -188,44 +156,12 @@ public class GameDisplay extends Canvas implements Runnable {
 		return DEBUG;
 	}
 	
-	public static Font getDebugFont() {
-		return DEBUG_FONT;
-	}
-	
-	public static Font getNormalFont() {
-		return NORMAL_FONT;
-	}
-	
 	public Server getServer() {
 		return server;
 	}
 	
-	public Screen getScreen() {
+	public PatternImage getScreen() {
 		return screen;
-	}
-	
-	public Level getLevel() {
-		return level;
-	}
-	
-	public Thread getThread() {
-		return thread;
-	}
-	
-	public boolean isRunning() {
-		return running;
-	}
-	
-	public int getFps() {
-		return fps;
-	}
-	
-	public BufferedImage getImage() {
-		return image;
-	}
-	
-	public int[] getPixels() {
-		return pixels;
 	}
 	
 }

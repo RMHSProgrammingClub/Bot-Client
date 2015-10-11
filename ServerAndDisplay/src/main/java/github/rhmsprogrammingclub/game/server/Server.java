@@ -24,9 +24,9 @@ public final class Server implements Runnable {
 	
 	private static Server instance;
 	
-	public static void main(String[] args) {
-		
+	public static Server getInstance(final String[] args) {
 		if (instance == null) instance = new Server(args);
+		return instance;
 	}
 	
 	private final String[] args;

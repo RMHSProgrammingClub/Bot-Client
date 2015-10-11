@@ -1,8 +1,7 @@
 package github.rhmsprogrammingclub.game.game.entities;
 
+import com.n9mtq4.patternimage.Pattern;
 import github.rhmsprogrammingclub.game.display.GameDisplay;
-import github.rhmsprogrammingclub.game.display.graphics.Screen;
-import github.rhmsprogrammingclub.game.display.graphics.Sprite;
 import github.rhmsprogrammingclub.game.game.Level;
 
 /**
@@ -17,26 +16,23 @@ public abstract class Entity {
 	public boolean removed = false;
 	public Level level;
 	public GameDisplay display;
-	protected Sprite sprite;
+	protected Pattern sprite;
+	
+	public Entity(int x, int y, Pattern sprite) {
+		this.x = x;
+		this.y = y;
+		this.sprite = sprite;
+	}
 	
 	public void init(Level level, GameDisplay display) {
 		this.level = level;
 		this.display = display;
 	}
 	
-	public void render(Screen screen) {
-		
-	}
-	
-	public void renderSpriteRel(Screen screen, Sprite sprite) {
-		screen.renderSpriteRel(x, y, x / Screen.ABS_TILE_SIZE, y / Screen.ABS_TILE_SIZE, sprite, level);
-	}
-	
-	public void renderSpriteAbs(Screen screen, Sprite sprite) {
-		screen.renderSpriteAbs(x, y, x / Screen.ABS_TILE_SIZE, y / Screen.ABS_TILE_SIZE, sprite, level);
-	}
-	
 	public void tick() {
+		
+		sprite.setxOff(x);
+		sprite.setyOff(y);
 		
 	}
 	
@@ -46,6 +42,10 @@ public abstract class Entity {
 	
 	public boolean isRemoved() {
 		return removed;
+	}
+	
+	public Pattern getSprite() {
+		return sprite;
 	}
 	
 }

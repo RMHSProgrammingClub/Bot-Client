@@ -1,6 +1,6 @@
 package github.rhmsprogrammingclub.game.game;
 
-import github.rhmsprogrammingclub.game.display.graphics.Screen;
+import com.n9mtq4.patternimage.PatternImage;
 import github.rhmsprogrammingclub.game.game.entities.Entity;
 
 import java.util.ArrayList;
@@ -14,16 +14,31 @@ public final class Level {
 	
 	private final ArrayList<Entity> entities;
 	
-	public Level() {
+	private final int width;
+	private final int height;
+	
+	public Level(int width, int height) {
 		this.entities = new ArrayList<Entity>();
+		this.width = width;
+		this.height = height;
 	}
 	
 	public final void tick() {
 		
 	}
 	
-	public final void render(Screen screen) {
+	public final void render(PatternImage screen) {
 		
+		
+		
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 }
