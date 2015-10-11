@@ -1,7 +1,7 @@
 package github.rhmsprogrammingclub.game.game.entities;
 
 import com.n9mtq4.patternimage.Pattern;
-import github.rhmsprogrammingclub.game.display.GameDisplay;
+import com.n9mtq4.patternimage.PatternImage;
 import github.rhmsprogrammingclub.game.game.Level;
 
 /**
@@ -15,7 +15,7 @@ public abstract class Entity {
 	public int y;
 	public boolean removed = false;
 	public Level level;
-	public GameDisplay display;
+	public PatternImage screen;
 	protected Pattern sprite;
 	
 	public Entity(int x, int y, Pattern sprite) {
@@ -24,9 +24,9 @@ public abstract class Entity {
 		this.sprite = sprite;
 	}
 	
-	public void init(Level level, GameDisplay display) {
+	public void init(Level level, PatternImage screen) {
 		this.level = level;
-		this.display = display;
+		this.screen = screen;
 	}
 	
 	public void tick() {

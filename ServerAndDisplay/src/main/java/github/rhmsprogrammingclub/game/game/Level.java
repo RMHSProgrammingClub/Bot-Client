@@ -1,7 +1,9 @@
 package github.rhmsprogrammingclub.game.game;
 
 import com.n9mtq4.patternimage.PatternImage;
+import com.n9mtq4.patternimage.utils.RgbConverter;
 import github.rhmsprogrammingclub.game.game.entities.Entity;
+import github.rhmsprogrammingclub.game.game.mobs.Robot;
 
 import java.util.ArrayList;
 
@@ -16,20 +18,26 @@ public final class Level {
 	
 	private final int width;
 	private final int height;
+	private final PatternImage screen;
 	
-	public Level(int width, int height) {
+	public Level(int width, int height, PatternImage screen) {
 		this.entities = new ArrayList<Entity>();
 		this.width = width;
 		this.height = height;
+		this.screen = screen;
 	}
 	
 	public final void tick() {
-		
+		for (Entity entity : entities) {
+			entity.tick();
+		}
 	}
 	
-	public final void render(PatternImage screen) {
+	public final void addEntity(Entity entity) {
 		
-		
+		screen.addPattern(entity.getSprite());
+		entity.init(this, screen);
+		entities.add(entity);
 		
 	}
 	
