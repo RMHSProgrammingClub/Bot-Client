@@ -8,20 +8,15 @@ import github.rmhsprogrammingclub.game.clientlauncher.classloader.LibLoader;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 /**
  * Created by will on 10/7/15 at 8:27 PM.
  *
  * @author Will "n9Mtq4" Bresnahan
+ * @deprecated wont be used for now.
  */
+@Deprecated
 public final class ClientLauncher {
 	
 	private static final int BOT_CODE_PARAM_COUNT = 3;

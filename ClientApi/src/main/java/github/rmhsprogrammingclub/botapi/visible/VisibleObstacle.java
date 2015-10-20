@@ -1,4 +1,4 @@
-package github.rmhsprogrammingclub.botapi;
+package github.rmhsprogrammingclub.botapi.visible;
 
 /**
  * Created by will on 10/6/15 at 6:26 PM.

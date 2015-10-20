@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    compile files('../BotGame/libs/NetworkingCore.jar')
+    compile files('../BotGame/libs/ServerAndDisplay.jar')
 }
 
 gradle.taskGraph.afterTask { Task task, TaskState state ->

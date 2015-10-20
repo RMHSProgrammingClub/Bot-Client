@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    compile files('../BotGame/libs/ClientApi.jar')
 }
 
 gradle.taskGraph.afterTask { Task task, TaskState state ->
