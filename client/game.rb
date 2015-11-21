@@ -45,15 +45,15 @@ class Game
     while i < data.length
       type = ""
 
-      if data[i + 3] == "1"
+      if data[i + 4] == "1"
         vision << Bot.new(data[i].to_i, data[i + 1].to_i, data[i + 2].to_i) 
-      elsif data[i + 3] == "2" #Wall
+      elsif data[i + 4] == "2" #Wall
         vision << Block.new(data[i].to_i, data[i + 1].to_i, data[i + 2].to_i, false)
       else #Block
         vision << Block.new(data[i].to_i, data[i + 1].to_i, data[i + 2].to_i, true)
       end
 
-      i += 4
+      i += 5
     end
 
     Bot.new(data[0].to_i, data[1].to_i, data[2].to_i, data[3].to_i, vision)
