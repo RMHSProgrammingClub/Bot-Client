@@ -23,6 +23,14 @@ class Game
     prepare_turn
   end
 
+  def end_turn (bot)
+    for action in bot.turn_log
+      puts action
+    end
+
+    puts "END"
+  end
+
   private
   def prepare_turn
     data = gets.chomp
@@ -55,6 +63,6 @@ class Game
       i += 5
     end
 
-    Bot.new(data[0].to_i, data[1].to_i, data[3].to_i, data[2].to_i, data[4], vision)
+    Bot.new(data[0].to_i, data[1].to_i, data[3].to_i, data[2].to_i, data[4].to_i, vision)
   end
 end
