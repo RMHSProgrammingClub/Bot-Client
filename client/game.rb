@@ -20,6 +20,11 @@ class Game
       abort("The server sent " + command + " instead of the turn start command!")
     end
 
+    prepare_turn
+  end
+
+  private
+  def prepare_turn
     data = gets.chomp
     data.gsub!("[", "")
     data.gsub!("]", "")
@@ -29,13 +34,7 @@ class Game
 
     data = data.split(",")
 
-    @ap = get_ap(data)
-    bot = create_bot(data)
-  end
-
-  private
-  def get_ap (data)
-    data[3].to_i
+    create_bot(data)
   end
 
   def create_bot (data)
@@ -56,6 +55,6 @@ class Game
       i += 5
     end
 
-    Bot.new(data[0].to_i, data[1].to_i, data[2].to_i, data[3].to_i, vision)
+    Bot.new(data[0].to_i, data[1].to_i, data[3].to_i, data[2].to_i, data[4], vision)
   end
 end
