@@ -24,11 +24,17 @@ class Game
   end
 
   def end_turn (bot)
+    log = ""
     for action in bot.turn_log
-      puts action
+      log << action + "\n"
     end
+    log << "END\n"
 
-    puts "END"
+    log_file = open("#{@team.to_s}", "w+")
+    log_file.puts(log)
+    log_file.close
+
+    puts log
   end
 
   private
