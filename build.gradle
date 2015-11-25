@@ -25,3 +25,6 @@ buildscript {
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 }
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}

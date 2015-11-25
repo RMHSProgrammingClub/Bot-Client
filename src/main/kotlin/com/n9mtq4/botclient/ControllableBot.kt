@@ -12,7 +12,7 @@ import kotlin.test.assertTrue
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-data class ControllableBot(val x: Int, val y: Int, val angle: Int, val health: Int, var actionPoints: Int, val vision: ArrayList<WorldObject>) {
+data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: Int, var actionPoints: Int, val vision: ArrayList<WorldObject>) {
 	
 	companion object {
 		/**
@@ -83,6 +83,10 @@ data class ControllableBot(val x: Int, val y: Int, val angle: Int, val health: I
 		
 		turnLog("MOVE $x $y") // add the movement to this turn's actions
 		
+//		update client copy
+		this.x += x
+		this.y += y
+		
 	}
 	
 	/**
@@ -100,6 +104,9 @@ data class ControllableBot(val x: Int, val y: Int, val angle: Int, val health: I
 		
 		actionPoints -= (angle / TURN_COST) // client side tracking of action points
 		turnLog("TURN $angle") // add the turn to this turn's actions
+		
+//		update local copy
+		this.angle += angle
 		
 	}
 	
