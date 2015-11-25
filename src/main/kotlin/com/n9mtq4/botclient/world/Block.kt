@@ -10,5 +10,5 @@ package com.n9mtq4.botclient.world
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-data class Block(val x: Int, val y: Int, val health: Int, val isBreakable: Boolean, val type: BlockType) :
+data class Block(override val x: Int, override val y: Int, val health: Int, val isBreakable: Boolean, val type: BlockType) :
 		WorldObject

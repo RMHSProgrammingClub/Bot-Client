@@ -10,6 +10,9 @@ package com.n9mtq4.botclient.world
  */
 interface WorldObject {
 	
+	val x: Int
+	val y: Int
+	
 	/**
 	 * Returns true if the world object
 	 * is a bot

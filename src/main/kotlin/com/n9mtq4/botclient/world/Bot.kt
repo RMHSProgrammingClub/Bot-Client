@@ -8,4 +8,4 @@ package com.n9mtq4.botclient.world
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-data class Bot(val x: Int, val y: Int, val angle: Int, val health: Int) : WorldObject
+data class Bot(override val x: Int, override val y: Int, val angle: Int, val health: Int) : WorldObject
