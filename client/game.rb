@@ -1,21 +1,29 @@
+require 'socket'
+
 require_relative 'bot.rb'
 require_relative 'block.rb'
 
 class Game
-  attr_reader :bot, :ap
+  attr_reader :bot, :ap, :team
+
+  def initialize
+    @server_socket = TCPSocket.open("localhost", 2000)
+  end
 
   def start
-    command = gets.chomp
+    command = read_line
 
     if command != "START"
       abort("The server sent " + command + " instead of the start command!")
     end
 
-    @team = gets.chomp.to_i
+    @team = read_line.to_i
+
+    puts "Successfully connected to server"
   end
 
   def wait_for_turn
-    command = gets.chomp
+    command = read_line
     if command != "START_TURN"
       abort("The server sent " + command + " instead of the turn start command!")
     end
@@ -30,16 +38,12 @@ class Game
     end
     log << "END\n"
 
-    log_file = open("#{@team.to_s}", "w+")
-    log_file.puts(log)
-    log_file.close
-
-    puts log
+    write(log)
   end
 
   private
   def prepare_turn
-    data = gets.chomp
+    data = read_line
     data.gsub!("[", "")
     data.gsub!("]", "")
     data.gsub!("\"", "")
@@ -70,5 +74,13 @@ class Game
     end
 
     Bot.new(data[0].to_i, data[1].to_i, data[3].to_i, data[2].to_i, data[4].to_i, vision)
+  end
+
+  def write (text)
+    @server_socket.puts(text)
+  end
+
+  def read_line
+    @server_socket.gets.chomp
   end
 end

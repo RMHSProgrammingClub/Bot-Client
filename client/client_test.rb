@@ -1,9 +1,9 @@
 require_relative 'game.rb'
 
-#puts "TEST"
-
 game = Game.new()
 game.start
+
+puts game.team
 
 while true
   bot = game.wait_for_turn
