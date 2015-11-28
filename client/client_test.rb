@@ -3,8 +3,6 @@ require_relative 'game.rb'
 game = Game.new()
 game.start
 
-puts game.team
-
 while true
   bot = game.wait_for_turn
   bot.move(0, 1)

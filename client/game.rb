@@ -17,9 +17,10 @@ class Game
       abort("The server sent " + command + " instead of the start command!")
     end
 
-    @team = read_line.to_i
-
     puts "Successfully connected to server"
+
+    @team = read_line.to_i
+    puts "Assigned team " + @team.to_s
   end
 
   def wait_for_turn
