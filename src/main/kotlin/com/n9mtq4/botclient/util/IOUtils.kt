@@ -1,9 +1,6 @@
 package com.n9mtq4.botclient.util
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.PrintWriter
-import java.net.ServerSocket
+import com.n9mtq4.botclient.Networking
 
 /**
  * Created by will on 11/24/15 at 4:40 PM.
@@ -16,13 +13,9 @@ import java.net.ServerSocket
  */
 //private val scanner = Scanner(System.`in`)
 
-private val SOCKET_PORT = 2000
+val SOCKET_PORT = 2000
 
-//TODO: these ports need to be based off the team number, or else they wont work
-private val socketServer = ServerSocket(SOCKET_PORT)
-private val client = socketServer.accept()
-private val input = BufferedReader(InputStreamReader(client.inputStream))
-private val output = PrintWriter(client.outputStream)
+private val networking = Networking(SOCKET_PORT)
 
 /**
  * Reads input from the server through
@@ -31,7 +24,7 @@ private val output = PrintWriter(client.outputStream)
  * @return The line that server has sent
  * */
 fun read(): String {
-	return input.readLine().trim()
+	return networking.read()
 }
 
 /**
@@ -41,5 +34,5 @@ fun read(): String {
  * @param msg The string to write to the socket
  * */
 fun write(msg: String) {
-	output.print(msg)
+	networking.write(msg)
 }

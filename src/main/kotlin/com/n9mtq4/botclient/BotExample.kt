@@ -14,6 +14,10 @@ fun main(args: Array<String>) {
 		val bot = game.waitForTurn()
 		
 //		TODO: add your bot ai code here
+		bot.move(0, 1)
+		bot.move(1, 0)
+		bot.move(0, -1)
+		bot.move(-1, 0)
 		
 		game.endTurn(bot)
 		

@@ -25,12 +25,13 @@ class Game {
 	 * */
 	init {
 		
-		val command = readLine()
+		val command = read()
 		if (command != "START") {
 			throw IOException("Command error: Expected 'START', got '$command'")
 		}
 		
 		team = read().toInt()
+		println("Team Number: $team")
 		
 	}
 	
