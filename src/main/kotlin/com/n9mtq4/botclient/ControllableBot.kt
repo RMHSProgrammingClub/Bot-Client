@@ -29,14 +29,14 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			while (i < data.size) {
 				
 //				add different things to vision
-				when (data[i + 4]) {
+				vision.add(when (data[i + 4]) {
 //					another bot
-					"1" -> vision.add(Bot(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), data[i + 3].toInt()))
+					"1" -> Bot(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), data[i + 3].toInt())
 //					a wall
-					"2" -> vision.add(Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), false, BlockType.WALL))
+					"2" -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), false, BlockType.WALL)
 //					a block
-					else -> vision.add(Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), true, BlockType.BLOCK))
-				}
+					else -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), true, BlockType.BLOCK)
+				})
 				
 				i += 5 // next!
 				
