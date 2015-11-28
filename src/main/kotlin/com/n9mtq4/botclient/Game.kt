@@ -1,10 +1,8 @@
 package com.n9mtq4.botclient
 
-import com.n9mtq4.botclient.util.readInput
-import java.io.BufferedWriter
-import java.io.FileWriter
+import com.n9mtq4.botclient.util.read
+import com.n9mtq4.botclient.util.write
 import java.io.IOException
-import java.io.PrintWriter
 
 /**
  * Created by will on 11/24/15 at 3:14 PM.
@@ -32,7 +30,7 @@ class Game {
 			throw IOException("Command error: Expected 'START', got '$command'")
 		}
 		
-		team = readInput().toInt()
+		team = read().toInt()
 		
 	}
 	
@@ -45,7 +43,7 @@ class Game {
 	 * */
 	fun waitForTurn(): ControllableBot {
 		
-		val command = readInput()
+		val command = read()
 		if (command != "START_TURN")
 			throw IOException("Command error: The server sent $command instead of the start command")
 		
@@ -63,9 +61,7 @@ class Game {
 		controllableBot.turnLog.forEach { log += it + "\n" }
 		log += "END\n"
 		
-		val out = PrintWriter(BufferedWriter(FileWriter(team.toString(), true)))
-		out.print(log)
-		out.close()
+		write(log)
 		
 	}
 	
@@ -81,7 +77,7 @@ class Game {
 	 * */
 	private fun readAndMakeBot(): ControllableBot {
 		
-		var data = readInput()
+		var data = read()
 		
 		data = data.replace("[", "")
 		data = data.replace("]", "")
