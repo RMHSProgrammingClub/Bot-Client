@@ -4,6 +4,7 @@ import com.n9mtq4.botclient.world.Block
 import com.n9mtq4.botclient.world.BlockType
 import com.n9mtq4.botclient.world.Bot
 import com.n9mtq4.botclient.world.WorldObject
+import java.io.IOException
 import java.util.ArrayList
 import kotlin.test.assertTrue
 
@@ -26,6 +27,7 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			
 			val vision = ArrayList<WorldObject>()
 			var i = 5 // skip first data set - the bot
+//			TODO: reading this data doesn't work!
 			while (i < data.size) {
 				
 //				add different things to vision
@@ -35,7 +37,8 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 //					a wall
 					"2" -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), false, BlockType.WALL)
 //					a block
-					else -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), true, BlockType.BLOCK)
+					"3" -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), true, BlockType.BLOCK)
+					else -> throw IOException("Error reading vision data from socket")
 				})
 				
 				i += 5 // next!

@@ -7,10 +7,12 @@ import java.net.Socket
 
 /**
  * Created by will on 11/27/15 at 11:16 PM.
- *
+ * 
+ * Handles all the client to server connections
+ * 
  * @author Will "n9Mtq4" Bresnahan
  */
-class Networking(val port: Int) {
+class ServerConnection(val port: Int) {
 	
 	internal val client: Socket
 	internal val input: BufferedReader
@@ -24,15 +26,29 @@ class Networking(val port: Int) {
 		println("Successfully connected to server")
 	}
 	
-	fun read(): String {
+	/**
+	 * Read data from the server
+	 * Halts and waits for data
+	 * 
+	 * @return The data received (in a string)
+	 * */
+	internal fun read(): String {
 		return input.readLine()
 	}
 	
-	fun write(msg: String) {
+	/**
+	 * Writes data to the server.
+	 * 
+	 * @param msg the string to send
+	 * */
+	internal fun write(msg: String) {
 		output.print(msg)
 	}
 	
-	fun close() {
+	/**
+	 * Closes all server connections
+	 * */
+	internal fun close() {
 		input.close()
 		output.close()
 		client.close()

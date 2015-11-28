@@ -1,7 +1,5 @@
 package com.n9mtq4.botclient
 
-import com.n9mtq4.botclient.util.read
-import com.n9mtq4.botclient.util.write
 import java.io.IOException
 
 /**
@@ -18,6 +16,11 @@ class Game {
 	val team: Int
 	
 	/**
+	 * The connection to the server
+	 * */
+	private val connection: ServerConnection
+	
+	/**
 	 * Constructor for the Game
 	 * 
 	 * Makes sure that the game should
@@ -25,12 +28,13 @@ class Game {
 	 * */
 	init {
 		
-		val command = read()
+		this.connection = ServerConnection(SERVER_PORT)
+		val command = connection.read()
 		if (command != "START") {
 			throw IOException("Command error: Expected 'START', got '$command'")
 		}
 		
-		team = read().toInt()
+		team = connection.read().toInt()
 		println("Team Number: $team")
 		
 	}
@@ -44,7 +48,7 @@ class Game {
 	 * */
 	fun waitForTurn(): ControllableBot {
 		
-		val command = read()
+		val command = connection.read()
 		if (command != "START_TURN")
 			throw IOException("Command error: The server sent $command instead of the start command")
 		
@@ -62,7 +66,7 @@ class Game {
 		controllableBot.turnLog.forEach { log += it + "\n" }
 		log += "END\n"
 		
-		write(log)
+		connection.write(log)
 		
 	}
 	
@@ -78,7 +82,7 @@ class Game {
 	 * */
 	private fun readAndMakeBot(): ControllableBot {
 		
-		var data = read()
+		var data = connection.read()
 		
 		data = data.replace("[", "")
 		data = data.replace("]", "")

@@ -23,3 +23,5 @@ val SHOOT_COST = 6
 val BOT_HIT_LOSS = 20
 val BLOCK_HIT_LOSS = 10
 val BOTS_TO_WIN = 3
+
+val SERVER_PORT = 2000
