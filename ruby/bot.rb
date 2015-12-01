@@ -3,7 +3,7 @@ require_relative 'constants.rb'
 class Bot
   attr_reader :x, :y, :angle, :health, :ap, :vision, :turn_log
 
-  def initialize (x, y, angle, health, ap, vision)
+  def initialize (x, y, angle, health, team, ap, vision)
     @x = x
     @y = y
     @angle = angle

@@ -63,18 +63,18 @@ class Game
     while i < data.length
       type = ""
 
-      if data[i + 4] == "1"
-        vision << Bot.new(data[i].to_i, data[i + 1].to_i, data[i + 2].to_i) 
-      elsif data[i + 4] == "2" #Wall
-        vision << Block.new(data[i].to_i, data[i + 1].to_i, data[i + 2].to_i, false)
+      if data[i] == "1" or data[i] == "2"
+        vision << Bot.new(data[i + 1].to_i, data[i + 2].to_i, data[i + 3].to_i, data[i + 4].to_i, data[i], nil. nil) 
+      elsif data[i] == "2" #Wall
+        vision << Block.new(data[i + 1].to_i, data[i + 2].to_i, data[i + 4].to_i, false)
       else #Block
-        vision << Block.new(data[i].to_i, data[i + 1].to_i, data[i + 2].to_i, true)
+        vision << Block.new(data[i + 1].to_i, data[i + 2].to_i, data[i + 4].to_i, true)
       end
 
       i += 5
     end
 
-    Bot.new(data[0].to_i, data[1].to_i, data[3].to_i, data[2].to_i, data[4].to_i, vision)
+    Bot.new(data[0].to_i, data[1].to_i, data[2].to_i, data[3].to_i, @team, data[4].to_i, vision)
   end
 
   def write (text)
