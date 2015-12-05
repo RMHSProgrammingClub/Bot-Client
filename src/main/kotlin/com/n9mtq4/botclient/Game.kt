@@ -62,11 +62,13 @@ class Game {
 	 * */
 	fun endTurn(controllableBot: ControllableBot) {
 		
-		var log = ""
+/*		var log = ""
 		controllableBot.turnLog.forEach { log += it + "\n" }
 		log += "END\n"
 		
-		connection.write(log)
+		connection.writeLogLine(log)*/
+		
+		connection.writeWholeLog(controllableBot.turnLog)
 		
 	}
 	

@@ -41,8 +41,19 @@ class ServerConnection(val port: Int) {
 	 * 
 	 * @param msg the string to send
 	 * */
-	internal fun write(msg: String) {
+	@Deprecated("Been replaced", ReplaceWith("writeWholeLog"))
+	internal fun writeLogLine(msg: String) {
 		output.print(msg)
+	}
+	
+	/**
+	 * Writes data to the server.
+	 * 
+	 * @param msg the turn log
+	 * */
+	internal fun writeWholeLog(msg: List<String>) {
+		msg.forEach { output.println(it) }
+		output.println("END")
 	}
 	
 	/**

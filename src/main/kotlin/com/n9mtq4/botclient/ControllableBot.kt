@@ -10,8 +10,15 @@ import kotlin.test.assertTrue
 
 /**
  * Created by will on 11/24/15 at 3:16 PM.
- * 
+ *
  * @author Will "n9Mtq4" Bresnahan
+ * 
+ * @param x The x position
+ * @param y the y position
+ * @param angle The angle in degrees
+ * @param health The health
+ * @param actionPoints The number of action points the bot has
+ * @param vision An array of [WorldObject]s that you can see
  */
 data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: Int, var actionPoints: Int, val vision: ArrayList<WorldObject>) {
 	
@@ -51,6 +58,20 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			return ControllableBot(data[0].toInt(), data[1].toInt(), data[3].toInt(), data[2].toInt(), data[4].toInt(), vision)
 			
 		}
+		
+		/**
+		 * Makes sure you can perform the action. Throws
+		 * an exception if you can't
+		 * 
+		 * @param need How many action points you need
+		 * @param have How many action points you have
+		 * @param type The name of the desired action
+		 * @throws CantPerformActionException if you cant perform the action
+		 * */
+		@Throws(CantPerformActionException::class)
+		private fun assertActionPoints(need: Int, have: Int, type: String) {
+			if (have - need < 0) throw CantPerformActionException(need, have, type)
+		}
 	}
 	
 	/**
@@ -74,15 +95,18 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 	 * 
 	 * @param x the x value to move (-1, 0, or 1)
 	 * @param y the y value to move (-1, 0, or 1)
+	 * @return this bot, (a build method)
+	 * @throws CantPerformActionException if you cant perform the action
 	 * */
-	fun move(x: Int, y: Int) {
+	@Throws(CantPerformActionException::class)
+	fun move(x: Int, y: Int): ControllableBot {
 		
 //		check if in bounds
 		assertTrue(x in -1..1, "x must be within -1 and 1")
 		assertTrue(y in -1..1, "y must be within -1 and 1")
 		
 //		make sure that the bot can move
-		assertTrue(canMove(x, y), "bot tried to make an action without the required action points")
+		assertActionPoints(calcMoveCost(x, y), actionPoints, "move")
 		
 		actionPoints -= calcMoveCost(x, y) // client side tracking of action points
 		
@@ -92,23 +116,27 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		this.x += x
 		this.y += y
 		
+		return this
+		
 	}
 	
-	fun canMove(x: Int, y: Int) = actionPoints - calcMoveCost(x, y) > 0
 	fun calcMoveCost(x: Int, y: Int) = MOVEMENT_COST
 	
 	/**
 	 * Turns the bot [angle] degrees.
 	 * 
 	 * @param angle The angle to turn in degrees
+	 * @return this bot, (a build method)
+	 * @throws CantPerformActionException if you cant perform the action
 	 * */
-	fun turn(angle: Int) {
+	@Throws(CantPerformActionException::class)
+	fun turn(angle: Int): ControllableBot {
 		
 //		make sure the angle is in bounds
 		assertTrue(angle in -360..360, "angle must be between -360 and 360")
 		
 //		make sure the bot can turn
-		assertTrue(canTurn(angle), "bot tried to turn without the required action points")
+		assertActionPoints(calcTurnCost(angle), actionPoints, "turn")
 		
 		actionPoints -= calcTurnCost(angle) // client side tracking of action points
 		turnLog("TURN $angle") // add the turn to this turn's actions
@@ -116,26 +144,32 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 //		update local copy
 		this.angle += angle
 		
+		return this
+		
 	}
 	
-	fun canTurn(angle: Int) = actionPoints - calcTurnCost(angle) > 0
 	fun calcTurnCost(angle: Int) = (angle / TURN_COST)
 	
 	/**
 	 * Shoots a projectile from the bot.
 	 * Uses the current angle for the shooting
+	 * 
+	 * @return this bot, (a build method)
+	 * @throws CantPerformActionException if you cant perform the action
 	 * */
-	fun shoot() {
+	@Throws(CantPerformActionException::class)
+	fun shoot(): ControllableBot {
 		
 //		make sure the bot can shoot
-		assertTrue(canShoot(), "bot tried to shoot without the required acton points")
+		assertActionPoints(calcShootCost(), actionPoints, "shoot")
 		
 		actionPoints -= calcShootCost() // client side tracking of action points
 		turnLog("SHOOT") // add the shooting to this turn's actions
 		
+		return this
+		
 	}
 	
-	fun canShoot() = actionPoints - SHOOT_COST > 0
 	fun calcShootCost() = SHOOT_COST
 	
 	/**
