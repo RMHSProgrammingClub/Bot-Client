@@ -28,7 +28,7 @@ class Game {
 	 * */
 	init {
 		
-		this.connection = ServerConnection(SERVER_PORT)
+		this.connection = ServerConnection(SOCKET_PORT)
 		val command = connection.read()
 		if (command != "START") {
 			throw IOException("Command error: Expected 'START', got '$command'")

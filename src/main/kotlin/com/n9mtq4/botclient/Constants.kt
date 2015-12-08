@@ -9,19 +9,23 @@ package com.n9mtq4.botclient
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-val MAP_WIDTH = 256
-val MAP_HEIGHT = 512
-val BOT_SPACING = 50 //TODO: Settle on correct coefficient (preferably scale)
+val SOCKET_PORT = 2000
+val MAP_WIDTH = 128
+val MAP_HEIGHT = 64
+val MAX_TURNS = 100
+val MAX_MANA = 100
+val BOT_SPACING = 10 //TODO: Settle on correct coefficient (preferably scale)
 val NUM_BOTS = 5
+val FOV = 90
 val ACTION_POINTS = 10
 val BOT_HEALTH = 100
 val BLOCK_HEALTH = 10
 val BOT_VISION = 50
 val MOVEMENT_COST = 1
+val PLACE_COST = 10
+val SPAWN_COST = 10
 val TURN_COST = 10
 val SHOOT_COST = 6
 val BOT_HIT_LOSS = 20
 val BLOCK_HIT_LOSS = 10
 val BOTS_TO_WIN = 3
-
-val SERVER_PORT = 2000

@@ -66,7 +66,7 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		 * @param need How many action points you need
 		 * @param have How many action points you have
 		 * @param type The name of the desired action
-		 * @throws CantPerformActionException if you cant perform the action
+		 * @throws CantPerformActionException if you can't perform the action
 		 * */
 		@Throws(CantPerformActionException::class)
 		private fun assertActionPoints(need: Int, have: Int, type: String) {
@@ -96,7 +96,7 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 	 * @param x the x value to move (-1, 0, or 1)
 	 * @param y the y value to move (-1, 0, or 1)
 	 * @return this bot, (a build method)
-	 * @throws CantPerformActionException if you cant perform the action
+	 * @throws CantPerformActionException if you can't perform the action
 	 * */
 	@Throws(CantPerformActionException::class)
 	fun move(x: Int, y: Int): ControllableBot {
@@ -127,7 +127,7 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 	 * 
 	 * @param angle The angle to turn in degrees
 	 * @return this bot, (a build method)
-	 * @throws CantPerformActionException if you cant perform the action
+	 * @throws CantPerformActionException if you can't perform the action
 	 * */
 	@Throws(CantPerformActionException::class)
 	fun turn(angle: Int): ControllableBot {
@@ -155,7 +155,7 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 	 * Uses the current angle for the shooting
 	 * 
 	 * @return this bot, (a build method)
-	 * @throws CantPerformActionException if you cant perform the action
+	 * @throws CantPerformActionException if you can't perform the action
 	 * */
 	@Throws(CantPerformActionException::class)
 	fun shoot(): ControllableBot {
@@ -171,6 +171,49 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 	}
 	
 	fun calcShootCost() = SHOOT_COST
+	
+	/**
+	 * Spawns a new bot for your team on the map near the middle of the field
+	 * 
+	 * @return this bot, (a build method)
+	 * @throws CantPerformActionException if you can't perform the action
+	 * */
+	@Throws(CantPerformActionException::class)
+	fun spawnBot(): ControllableBot {
+		
+//		make sure the bot can spawn another bot
+		assertActionPoints(calcSpawnCost(), actionPoints, "spawn")
+		
+		actionPoints -= calcSpawnCost() // client side tracking of action points
+		turnLog("SPAWN") // add the spawning to this turn's actions
+		
+		return this
+		
+	}
+	
+	fun calcSpawnCost() = SPAWN_COST
+	
+	/**
+	 * Places a new block right infront of you
+	 * */
+	@Throws(CantPerformActionException::class)
+	fun placeBlock(x: Int, y: Int): ControllableBot {
+		
+//		check if in bounds
+		assertTrue(x in -1..1, "x must be within -1 and 1")
+		assertTrue(y in -1..1, "y must be within -1 and 1")
+		
+//		make sure the bot can spawn another bot
+		assertActionPoints(calcPlaceBlock(), actionPoints, "place")
+		
+		actionPoints -= calcPlaceBlock() // client side tracking of action points
+		turnLog("PLACE $x $y") // add the spawning to this turn's actions
+		
+		return this
+		
+	}
+	
+	fun calcPlaceBlock() = PLACE_COST
 	
 	/**
 	 * Adds a command onto this turn's actions
