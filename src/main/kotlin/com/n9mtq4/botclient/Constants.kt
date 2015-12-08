@@ -9,6 +9,8 @@ package com.n9mtq4.botclient
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
+val API_LEVEL = 1
+
 val SOCKET_PORT = 2000
 val MAP_WIDTH = 128
 val MAP_HEIGHT = 64
@@ -24,7 +26,7 @@ val BOT_VISION = 50
 val MOVEMENT_COST = 1
 val PLACE_COST = 10
 val SPAWN_COST = 10
-val TURN_COST = 10
+val TURN_COST = 20 // higher is lower
 val SHOOT_COST = 6
 val BOT_HIT_LOSS = 20
 val BLOCK_HIT_LOSS = 10

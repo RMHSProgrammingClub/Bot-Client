@@ -30,8 +30,19 @@ class Game {
 		
 		this.connection = ServerConnection(SOCKET_PORT)
 		val command = connection.read()
-		if (command != "START") {
+		if (!command.contains("START")) { // BotServer-kt support
 			throw IOException("Command error: Expected 'START', got '$command'")
+		}
+		
+//		Version checking. Only works with BotServer-kt
+		if (command.contains("API")) {
+			val version = command.substring("START API ".length).toInt()
+			if (version < API_LEVEL) {
+				println("ERROR: the server is running a newer version than the client. Please update this API to support the newer server.")
+				System.exit(-1)
+			}else if (version != API_LEVEL) {
+				println("WARNING: the server and the client are running a different version.")
+			}
 		}
 		
 		team = connection.read().toInt()
