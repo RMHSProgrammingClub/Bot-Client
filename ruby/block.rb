@@ -1,10 +1,6 @@
-class Block
-  attr_reader :x, :y, :health, :is_breakable
+class Block < Entity
 
-  def initialize (x, y, health, is_breakable)
-    @x = x
-    @y = y
-    @health = health
-    @is_breakable = is_breakable
+  def initialize (x, y, health, is_destroyable)
+    super(x, y, 0, health, is_destroyable)
   end
 end

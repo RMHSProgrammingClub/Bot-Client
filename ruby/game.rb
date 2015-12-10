@@ -1,7 +1,10 @@
 require 'socket'
+require 'json'
 
 require_relative 'bot.rb'
 require_relative 'block.rb'
+require_relative 'wall.rb'
+require_relative 'flag.rb'
 
 class Game
   attr_reader :bot, :ap, :team
@@ -44,14 +47,9 @@ class Game
 
   private
   def prepare_turn
-    data = read_line
-    data.gsub!("[", "")
-    data.gsub!("]", "")
-    data.gsub!("\"", "")
-    data.gsub!("\\", "")
-    data.gsub!(" ", "")
+    data = read_line.chomp
 
-    data = data.split(",")
+    data = JSON.parse(data)
 
     create_bot(data)
   end
@@ -59,22 +57,21 @@ class Game
   def create_bot (data)
     vision = Array.new
 
-    i = 5 #Skip other data
-    while i < data.length
-      type = ""
-
-      if data[i] == "1" or data[i] == "2"
-        vision << Bot.new(data[i + 1].to_i, data[i + 2].to_i, data[i + 3].to_i, data[i + 4].to_i, data[i], nil. nil) 
-      elsif data[i] == "2" #Wall
-        vision << Block.new(data[i + 1].to_i, data[i + 2].to_i, data[i + 4].to_i, false)
-      else #Block
-        vision << Block.new(data[i + 1].to_i, data[i + 2].to_i, data[i + 4].to_i, true)
+    for entity in data["vision"]
+      if entity["type"] == "BOT"
+        vision << Bot.new(entity["x"].to_i, entity["y"].to_i, entity["angle"].to_i, entity["team"].to_i, entity["health"].to_i, nil, nil)
+      elsif entity["type"] == "WALL"
+        vision << Block.new(entity["x"], entity["y"], entity["health"], false)
+      elsif entity["type"] == "BLOCK"
+        vision << Wall.new(entity["x"], entity["y"])
+      elsif entity["type"] == "FLAG"
+        vision << Flag.new(entity["x"], entity["y"], entity["team"])
+      else
+        abort("Server sent unknown type: " + entity["type"])
       end
-
-      i += 5
     end
 
-    Bot.new(data[0].to_i, data[1].to_i, data[2].to_i, data[3].to_i, @team, data[4].to_i, vision)
+    Bot.new(data["x"].to_i, data["y"].to_i, data["angle"].to_i, data["health"].to_i, @team, data["ap"].to_i, vision)
   end
 
   def write (text)

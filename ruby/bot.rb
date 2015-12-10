@@ -1,16 +1,15 @@
+require_relative 'entity.rb'
 require_relative 'constants.rb'
 
-class Bot
-  attr_reader :x, :y, :angle, :health, :ap, :vision, :turn_log
+class Bot < Entity
+  attr_reader :ap, :vision, :turn_log
 
   def initialize (x, y, angle, health, team, ap, vision)
-    @x = x
-    @y = y
-    @angle = angle
-    @health = health
     @ap = ap
     @vision = vision
     @turn_log = Array.new
+
+    super(x, y, angle, health, true)
   end
 
   def move (x, y)
@@ -40,6 +39,25 @@ class Bot
 
     @ap -= $SHOOT_COST
     @turn_log << "SHOOT"
+  end
+
+  def place_block (x, y)
+    assert(@ap - $PLACE_COST > 0, "bot tried to make an action without the required ap")
+    #Is int
+    assert(is_int?(x), "x must be a whole number")
+    assert(is_int?(y), "y must be a whole number")
+    #Is in bounds
+    assert((-1..1).include?(x) , "x must be inbetween -1 and 1")
+    assert((-1..1).include?(y), "y must be inbetween -1 and 1")
+
+    @ap -= $PLACE_COST
+    @turn_log << "PLACE " + x.to_s + " " + y.to_s
+  end
+
+  def spawn_bot
+    assert(@ap - $SPAWN_COST > 0, "bot tried to make an action without the required ap")
+    @ap -= $SPAWN_COST
+    @turn_log << "SPAWN"
   end
 
   private
