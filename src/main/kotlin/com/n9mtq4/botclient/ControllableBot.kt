@@ -42,12 +42,12 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			val json: JSONObject = parser.parse(data) as JSONObject
 			
 //			parse the things for the bot
-			val x = json.getRaw("x") as Int
-			val y = json.getRaw("y") as Int
-			val angle = json.getRaw("angle") as Int
-			val health = json.getRaw("health") as Int
-			val actionPoints = json.getRaw("ap") as Int
-			val mana = json.getRaw("mana") as Int
+			val x = (json.getRaw("x") as Long).toInt()
+			val y = (json.getRaw("y") as Long).toInt()
+			val angle = (json.getRaw("angle") as Long).toInt()
+			val health = (json.getRaw("health") as Long).toInt()
+			val actionPoints = (json.getRaw("ap") as Long).toInt()
+			val mana = (json.getRaw("mana") as Long).toInt()
 			
 //			start vision parsing
 			val visionJson = json.getRaw("vision") as JSONArray
@@ -56,26 +56,26 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 				
 //				stuff everything has
 				val type = it.getRaw("type") as String
-				val vx = it.getRaw("x") as Int
-				val vy = it.getRaw("y") as Int
+				val vx = (it.getRaw("x") as Long).toInt()
+				val vy = (it.getRaw("y") as Long).toInt()
 				
 //				stuff only some things have
 				if (type.equals("bot", true)) {
 //					bots have a team, angle, and health
-					val vteam = it.getRaw("team") as Int
-					val vangle = it.getRaw("angle") as Int
-					val vhealth = it.getRaw("health") as Int
+					val vteam = (it.getRaw("team") as Long).toInt()
+					val vangle = (it.getRaw("angle") as Long).toInt()
+					val vhealth = (it.getRaw("health") as Long).toInt()
 					vision.add(Bot(vx, vy, vangle, vhealth, vteam))
 				}else if (type.equals("block", true)) {
 //					blocks have health
-					val vhealth = it.getRaw("health") as Int
+					val vhealth = (it.getRaw("health") as Long).toInt()
 					vision.add(Block(x, y, vhealth, true, BlockType.BLOCK))
 				}else if (type.equals("wall", true)) {
 //					walls are generic
 					vision.add(Block(x ,y, 100, false, BlockType.WALL))
 				}else if (type.equals("flag", true)) {
 //					flags have a team
-					val vteam = it.getRaw("team") as Int
+					val vteam = (it.getRaw("team") as Long).toInt()
 					vision.add(Flag(x, y, vteam))
 				}else {
 					throw IOException("Error reading vision data:\n$data")

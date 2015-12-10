@@ -20,6 +20,8 @@ fun main(args: Array<String>) {
 		bot.move(0, -1)
 		bot.move(-1, 0)
 		
+		println(bot.vision.toString())
+		
 		game.endTurn(bot)
 		
 	}

@@ -38,16 +38,32 @@ class ServerConnection(val port: Int) {
 	 * 
 	 * @return The data received (in a string)
 	 * */
+	@JvmName("read")
 	internal fun read(): String {
-//		return input.readLine()
 		
-		var text = ""
+		var text = input.readLine()
+		
+		if (text.equals("{")) {
+			
+			var command: String
+			do {
+				command = input.readLine()
+				text += command + "\n"
+			}while (command != "}")
+			
+			return text
+			
+		}else {
+			return text
+		}
+		
+/*		var text = ""
 		do {
 			val command = input.readLine();
 			text += command + "\n"
 		}while(command != null);
 		
-		return text.trim()
+		return text.trim()*/
 		
 	}
 	
