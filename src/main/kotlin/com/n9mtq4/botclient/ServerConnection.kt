@@ -27,13 +27,28 @@ class ServerConnection(val port: Int) {
 	}
 	
 	/**
-	 * Read data from the server
-	 * Halts and waits for data
+	 * Reads only one line from the server/
+	 * 
+	 * @return a single line of data
+	 * */
+	internal fun readLine(): String = input.readLine()
+	
+	/**
+	 * Reads all available data from the server.
 	 * 
 	 * @return The data received (in a string)
 	 * */
 	internal fun read(): String {
-		return input.readLine()
+//		return input.readLine()
+		
+		var text = ""
+		do {
+			val command = input.readLine();
+			text += command + "\n"
+		}while(command != null);
+		
+		return text.trim()
+		
 	}
 	
 	/**

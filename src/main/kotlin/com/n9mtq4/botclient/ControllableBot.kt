@@ -3,7 +3,11 @@ package com.n9mtq4.botclient
 import com.n9mtq4.botclient.world.Block
 import com.n9mtq4.botclient.world.BlockType
 import com.n9mtq4.botclient.world.Bot
+import com.n9mtq4.botclient.world.Flag
 import com.n9mtq4.botclient.world.WorldObject
+import org.json.simple.JSONArray
+import org.json.simple.JSONObject
+import org.json.simple.parser.JSONParser
 import java.io.IOException
 import java.util.ArrayList
 import kotlin.test.assertTrue
@@ -30,32 +34,56 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		 * @param data some pre-parsed data from [Game.readAndMakeBot]
 		 * @return A [ControllableBot] created from the given data
 		 * */
-		internal fun buildBot(data: List<String>): ControllableBot {
+		internal fun buildBot(data: String): ControllableBot {
 			
+//			initialize the json parsing
+//			val jsonString = data.joinToString("\n")
+			val parser = JSONParser()
+			val json: JSONObject = parser.parse(data) as JSONObject
+			
+//			parse the things for the bot
+			val x = json.getRaw("x") as Int
+			val y = json.getRaw("y") as Int
+			val angle = json.getRaw("angle") as Int
+			val health = json.getRaw("health") as Int
+			val actionPoints = json.getRaw("ap") as Int
+			val mana = json.getRaw("mana") as Int
+			
+//			start vision parsing
+			val visionJson = json.getRaw("vision") as JSONArray
 			val vision = ArrayList<WorldObject>()
-			var i = 5 // skip first data set - the bot
-			while (i < data.size) {
+			visionJson.map { it as JSONObject }.forEach { 
 				
-//				add different things to vision
-				vision.add(when (data[i + 4]) {
-//					god knows what these arguments are (ps: jake is god)
-//					bot on team 1
-					"1" -> Bot(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), data[i + 3].toInt(), 1)
-//					bot on team 2
-					"2" -> Bot(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), data[i + 3].toInt(), 2)
-//					a wall
-					"3" -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), false, BlockType.WALL)
-//					a block
-					"4" -> Block(data[i].toInt(), data[i + 1].toInt(), data[i + 2].toInt(), true, BlockType.BLOCK)
-					else -> throw IOException("Error reading vision data from socket")
-				})
+//				stuff everything has
+				val type = it.getRaw("type") as String
+				val vx = it.getRaw("x") as Int
+				val vy = it.getRaw("y") as Int
 				
-				i += 5 // next!
+//				stuff only some things have
+				if (type.equals("bot", true)) {
+//					bots have a team, angle, and health
+					val vteam = it.getRaw("team") as Int
+					val vangle = it.getRaw("angle") as Int
+					val vhealth = it.getRaw("health") as Int
+					vision.add(Bot(vx, vy, vangle, vhealth, vteam))
+				}else if (type.equals("block", true)) {
+//					blocks have health
+					val vhealth = it.getRaw("health") as Int
+					vision.add(Block(x, y, vhealth, true, BlockType.BLOCK))
+				}else if (type.equals("wall", true)) {
+//					walls are generic
+					vision.add(Block(x ,y, 100, false, BlockType.WALL))
+				}else if (type.equals("flag", true)) {
+//					flags have a team
+					val vteam = it.getRaw("team") as Int
+					vision.add(Flag(x, y, vteam))
+				}else {
+					throw IOException("Error reading vision data:\n$data")
+				}
 				
 			}
 			
-//			return a ControllableBot with the x, y, angle, health, and newly created vision
-			return ControllableBot(data[0].toInt(), data[1].toInt(), data[3].toInt(), data[2].toInt(), data[4].toInt(), vision)
+			return ControllableBot(x, y, angle, health, actionPoints, vision)
 			
 		}
 		

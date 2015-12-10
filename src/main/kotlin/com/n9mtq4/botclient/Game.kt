@@ -97,15 +97,15 @@ class Game {
 		
 		var data = connection.read()
 		
-		data = data.replace("[", "")
+/*		data = data.replace("[", "")
 		data = data.replace("]", "")
 		data = data.replace("\"", "")
 		data = data.replace("\\", "")
 		data = data.replace(" ", "")
 		
 		val tokens = data.split(",")
-		
-		return ControllableBot.buildBot(tokens)
+		*/
+		return ControllableBot.buildBot(data)
 		
 	}
 	
