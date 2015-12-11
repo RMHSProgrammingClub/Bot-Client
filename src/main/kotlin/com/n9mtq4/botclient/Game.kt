@@ -29,7 +29,7 @@ class Game {
 	init {
 		
 		this.connection = ServerConnection(SOCKET_PORT)
-		val command = connection.read()
+		val command = connection.readLine()
 		if (!command.contains("START")) { // BotServer-kt support
 			throw IOException("Command error: Expected 'START', got '$command'")
 		}
@@ -45,7 +45,7 @@ class Game {
 			}
 		}
 		
-		team = connection.read().toInt()
+		team = connection.readLine().toInt()
 		println("Team Number: $team")
 		
 	}

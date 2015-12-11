@@ -41,20 +41,20 @@ class ServerConnection(val port: Int) {
 	@JvmName("read")
 	internal fun read(): String {
 		
-		var text = input.readLine()
+		var text = input.readLine() // read the first line
 		
-		if (text.equals("{")) {
+		if (text.equals("{")) { // if we are dealing with a multi-line json string
 			
 			var command: String
 			do {
 				command = input.readLine()
 				text += command + "\n"
-			}while (command != "}")
+			}while (command != "}") // read all the lines we have
 			
 			return text
 			
 		}else {
-			return text
+			return text // if its a normal string return the single line
 		}
 		
 /*		var text = ""

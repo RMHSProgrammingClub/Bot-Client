@@ -15,10 +15,13 @@ fun main(args: Array<String>) {
 		
 //		TODO: add your bot ai code here
 //		Look at the bot examples at https://github.com/RMHSProgrammingClub/Bot-Examples
-		bot.move(0, 1)
+/*		bot.move(0, 1)
 		bot.move(1, 0)
 		bot.move(0, -1)
-		bot.move(-1, 0)
+		bot.move(-1, 0)*/
+		
+//		game.getTeam() == 1 ? 1 : -1
+		bot.move(0, if (game.team == 1) 1 else -1); // move forward
 		
 		println(bot.vision.toString())
 		
