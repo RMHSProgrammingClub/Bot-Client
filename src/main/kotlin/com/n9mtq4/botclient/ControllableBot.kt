@@ -34,6 +34,7 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		 * @param data some pre-parsed data from [Game.readAndMakeBot]
 		 * @return A [ControllableBot] created from the given data
 		 * */
+		@JvmName("buildBot")
 		internal fun buildBot(data: String): ControllableBot {
 			
 //			initialize the json parsing

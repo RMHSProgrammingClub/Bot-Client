@@ -24,6 +24,7 @@ fun main(args: Array<String>) {
 		bot.move(0, if (game.team == 1) 1 else -1); // move forward
 		
 		println(bot.vision.toString())
+		println(bot.vision.size)
 		
 		game.endTurn(bot)
 		

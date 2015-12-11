@@ -7,9 +7,9 @@ import java.net.Socket
 
 /**
  * Created by will on 11/27/15 at 11:16 PM.
- * 
+ *
  * Handles all the client to server connections
- * 
+ *
  * @author Will "n9Mtq4" Bresnahan
  */
 class ServerConnection(val port: Int) {
@@ -28,14 +28,17 @@ class ServerConnection(val port: Int) {
 	
 	/**
 	 * Reads only one line from the server/
-	 * 
+	 *
 	 * @return a single line of data
 	 * */
-	internal fun readLine(): String = input.readLine()
+	internal fun readLine(): String {
+		val str = input.readLine()
+		return str
+	}
 	
 	/**
 	 * Reads all available data from the server.
-	 * 
+	 *
 	 * @return The data received (in a string)
 	 * */
 	@JvmName("read")
@@ -49,27 +52,27 @@ class ServerConnection(val port: Int) {
 			do {
 				command = input.readLine()
 				text += command + "\n"
-			}while (command != "}") // read all the lines we have
+			} while (command != "}") // read all the lines we have
 			
 			return text
 			
-		}else {
+		} else {
 			return text // if its a normal string return the single line
 		}
 		
-/*		var text = ""
-		do {
-			val command = input.readLine();
-			text += command + "\n"
-		}while(command != null);
-		
-		return text.trim()*/
+		/*		var text = ""
+				do {
+					val command = input.readLine();
+					text += command + "\n"
+				}while(command != null);
+				
+				return text.trim()*/
 		
 	}
 	
 	/**
 	 * Writes data to the server.
-	 * 
+	 *
 	 * @param msg the string to send
 	 * */
 	@Deprecated("Been replaced", ReplaceWith("writeWholeLog"))
@@ -79,7 +82,7 @@ class ServerConnection(val port: Int) {
 	
 	/**
 	 * Writes data to the server.
-	 * 
+	 *
 	 * @param msg the turn log
 	 * */
 	internal fun writeWholeLog(msg: List<String>) {
