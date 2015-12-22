@@ -31,7 +31,7 @@ package com.n9mtq4.botclient
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-val API_LEVEL = 2
+val API_LEVEL = 1
 
 val SOCKET_PORT = 2000
 val MAP_WIDTH = 128

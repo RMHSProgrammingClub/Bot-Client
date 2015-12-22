@@ -9,12 +9,21 @@ Please reference the wiki for the documentation and in depth instructions on how
 ### How to build
  - Download and install IntelliJ here: https://www.jetbrains.com/idea/
  - Download / clone this repository
+ - Unzip the repository if necessary
+ - cd to the directory
+ - run this command 
+   - linux / osx - "./gradlew build"
+   - windows - "./gradlew.bat build" (not tested, may not work)
+ - Yay! Your compiled client is now located under build/libs/BotClient-Kotlin.jar
+### Importing into IntelliJ
+ - Download and install IntelliJ here: https://www.jetbrains.com/idea/
+ - Download / clone this repository
  - In IntelliJ - to open the project:
    - "Import Project"
    - Select the directory
    - "Import project from external model"
    - "Gradle"
-   - Make sure "Use auto-import" and "Create directories for empty content roots automatically" are both checked.
+   - Make sure "Use auto-import" and "Create directories for empty content roots automatically" are both checked
    - Select "Use customizable gradle wrapper"
    - Select "Finish"
  - Inside the project, under the "Gradle" sidebar:
