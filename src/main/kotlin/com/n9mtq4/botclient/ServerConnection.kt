@@ -3,7 +3,9 @@ package com.n9mtq4.botclient
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.PrintWriter
+import java.net.ConnectException
 import java.net.Socket
+import java.net.SocketException
 
 /**
  * Created by will on 11/27/15 at 11:16 PM.
@@ -20,10 +22,16 @@ class ServerConnection(val port: Int) {
 	
 	init {
 		println("Connecting to server...")
-		this.client = Socket("localhost", port)
-		this.input = BufferedReader(InputStreamReader(client.inputStream))
-		this.output = PrintWriter(client.outputStream, true)
-		println("Successfully connected to server")
+		try {
+			this.client = Socket("localhost", port)
+			this.input = BufferedReader(InputStreamReader(client.inputStream))
+			this.output = PrintWriter(client.outputStream, true)
+			println("Successfully connected to server")
+		}catch (e: ConnectException) {
+			System.err.println("Is the server running?")
+			e.printStackTrace()
+			throw e
+		}
 	}
 	
 	/**
@@ -44,22 +52,28 @@ class ServerConnection(val port: Int) {
 	@JvmName("read")
 	internal fun read(): String {
 		
-		var text = input.readLine() // read the first line
-		
-		if (text.equals("{")) { // if we are dealing with a multi-line json string
+		try {
+			var text = input.readLine() // read the first line
 			
-			var command: String
-			do {
-				command = input.readLine()
-				text += command + "\n"
-			} while (command != "}") // read all the lines we have
-			
-			return text
-			
-		} else {
-			return text // if its a normal string return the single line
+			if (text.equals("{")) {
+				// if we are dealing with a multi-line json string
+				
+				var command: String
+				do {
+					command = input.readLine()
+					text += command + "\n"
+				} while (command != "}") // read all the lines we have
+				
+				return text
+				
+			} else {
+				return text // if its a normal string return the single line
+			}
+		}catch (e: SocketException) {
+			System.err.println("Is the server running?")
+			e.printStackTrace()
+			throw e
 		}
-		
 		/*		var text = ""
 				do {
 					val command = input.readLine();
@@ -86,8 +100,14 @@ class ServerConnection(val port: Int) {
 	 * @param msg the turn log
 	 * */
 	internal fun writeWholeLog(msg: List<String>) {
-		msg.forEach { output.println(it) }
-		output.println("END")
+		try {
+			msg.forEach { output.println(it) }
+			output.println("END")
+		}catch (e: SocketException) {
+			System.err.println("Is the server running?")
+			e.printStackTrace()
+			throw e
+		}
 	}
 	
 	/**
