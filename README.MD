@@ -11,7 +11,7 @@ Please reference the wiki for the documentation and in depth instructions on how
  - Download / clone this repository
  - In IntelliJ - to open the project:
    - "Import Project"
-   - (select the directory)
+   - Select the directory
    - "Import project from external model"
    - "Gradle"
    - Make sure "Use auto-import" and "Create directories for empty content roots automatically" are both checked.
