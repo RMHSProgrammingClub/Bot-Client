@@ -5,7 +5,7 @@
 ### How to obtain
 You can download compiled versions of this API here: https://github.com/RMHSProgrammingClub/Bot-Game/releases. If you are modifying the client, or for some reason want to build it yourself, building instructions are below.
 ### How to use
-Please reference the wiki for the documentation and in depth instructions on how to begin.
+Please reference the wiki for the documentation and in depth instructions on how to begin. Here: https://github.com/RMHSProgrammingClub/Bot-Game/wiki
 ### How to build
  - Download and install IntelliJ here: https://www.jetbrains.com/idea/
  - Download / clone this repository
