@@ -94,3 +94,6 @@ gradle-app.setting
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
+# upload the documentation
+!build/doc
+!build/doc/*

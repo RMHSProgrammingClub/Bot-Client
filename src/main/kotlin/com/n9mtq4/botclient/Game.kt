@@ -4,7 +4,9 @@ import java.io.IOException
 
 /**
  * Created by will on 11/24/15 at 3:14 PM.
- *
+ * 
+ * An object for the currently running game.
+ * 
  * @author Will "n9Mtq4" Bresnahan
  */
 class Game {
@@ -16,7 +18,15 @@ class Game {
 	val team: Int
 	
 	/**
-	 * The connection to the server
+	 * The version of the server this client is connected to.
+	 * */
+	val serverVersion: String
+	
+	/**
+	 * The connection to the server.
+	 * 
+	 * "ruby" or "kotlin API_LEVEL"
+	 * ex: "ruby", "kotlin 1", "kotlin 2"
 	 * */
 	private val connection: ServerConnection
 	
@@ -37,12 +47,15 @@ class Game {
 //		Version checking. Only works with BotServer-kt
 		if (command.contains("API")) {
 			val version = command.substring("START API ".length).toInt()
+			this.serverVersion = "kotlin $version"
 			if (version < API_LEVEL) {
 				println("ERROR: the server is running a newer version than the client. Please update this API to support the newer server.")
 				System.exit(-1)
 			}else if (version != API_LEVEL) {
 				println("WARNING: the server and the client are running a different version.")
 			}
+		}else {
+			this.serverVersion = "ruby"
 		}
 		
 		team = connection.readLine().toInt()
@@ -86,7 +99,7 @@ class Game {
 	/**
 	 * Prepares the data for building a bot
 	 * does some replacing and splits it.
-	 * 
+	 *  
 	 * The actually parsing is done by
 	 * ControllableBot.buildBot
 	 * 
@@ -97,14 +110,6 @@ class Game {
 		
 		var data = connection.read()
 		
-/*		data = data.replace("[", "")
-		data = data.replace("]", "")
-		data = data.replace("\"", "")
-		data = data.replace("\\", "")
-		data = data.replace(" ", "")
-		
-		val tokens = data.split(",")
-		*/
 		return ControllableBot.buildBot(data)
 		
 	}

@@ -21,10 +21,10 @@ fun main(args: Array<String>) {
 		bot.move(-1, 0)*/
 		
 //		game.getTeam() == 1 ? 1 : -1
-		bot.move(0, if (game.team == 1) 1 else -1); // move forward
+//		bot.move(0, if (game.team == 1) 1 else -1); // move forward
 		
-		println(bot.vision.toString())
-		println(bot.vision.size)
+//		println(bot.vision.toString())
+//		println(bot.vision.size)
 		
 		game.endTurn(bot)
 		
