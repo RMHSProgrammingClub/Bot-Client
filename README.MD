@@ -20,4 +20,4 @@ Please reference the wiki for the documentation and in depth instructions on how
  - Inside the project, under the "Gradle" sidebar:
    - Manually refresh all gradle projects
    - Double click on Tasks/build/build
- - Yay! your compiled client is now loaded under build/libs/BotClient-Kotlin.jar
+ - Yay! Your compiled client is now located under build/libs/BotClient-Kotlin.jar
