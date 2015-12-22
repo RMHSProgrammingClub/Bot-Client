@@ -34,8 +34,8 @@ package com.n9mtq4.botclient
 val API_LEVEL = 1
 
 val SOCKET_PORT = 2000
-val MAP_WIDTH = 128
-val MAP_HEIGHT = 64
+val MAP_WIDTH = 64
+val MAP_HEIGHT = 128
 val MAX_TURNS = 100
 val MAX_MANA = 100
 val BOT_SPACING = 10 //TODO: Settle on correct coefficient (preferably scale)
