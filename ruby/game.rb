@@ -5,6 +5,7 @@ require_relative 'bot.rb'
 require_relative 'block.rb'
 require_relative 'wall.rb'
 require_relative 'flag.rb'
+require_relative 'constants.rb'
 
 class Game
   attr_reader :bot, :ap, :team
@@ -14,10 +15,12 @@ class Game
   end
 
   def start
+    write($SERVER_VERSION) # Send server compliance
+
     command = read_line
 
-    if command != "START"
-      abort("The server sent " + command + " instead of the start command!")
+    if command != "START" # Wrong version
+      abort(command)
     end
 
     puts "Successfully connected to server"
@@ -29,7 +32,11 @@ class Game
   def wait_for_turn
     command = read_line
     if command != "START_TURN"
-      abort("The server sent " + command + " instead of the turn start command!")
+      if command == "WIN" or command == "LOSE" or command == "DRAW"
+        abort("Game ended in " + command.downcase)
+      else
+        abort("The server sent " + command + " instead of the turn start command!")
+      end
     end
 
     prepare_turn
@@ -47,7 +54,7 @@ class Game
 
   private
   def prepare_turn
-    data = read_line.chomp
+    data = read_line
 
     data = JSON.parse(data)
 
