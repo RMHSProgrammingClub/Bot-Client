@@ -1,8 +1,0 @@
-rootProject.name = 'BotGame'
-include 'ServerAndDisplay'
-include 'ClientApi'
-include 'BotExample'
-include 'NetworkingCore'
-include 'ClientLauncher'
-include 'ServerLauncher'
-
