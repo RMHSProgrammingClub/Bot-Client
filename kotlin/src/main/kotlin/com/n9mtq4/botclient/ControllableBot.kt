@@ -145,16 +145,19 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		assertTrue(y in -1..1, "y must be within -1 and 1")
 		
 //		make sure the bot can spawn another bot
-		assertManaPoints(calcSpawnCost(x, y), mana, "spawn")
+//		assertManaPoints(calcSpawnCostAp(x, y), mana, "spawn")
+		assertActionManaPoints(calcSpawnCostAp(x, y), actionPoints, calcSpawnCostMana(x, y), mana, "spawn")
 		
-		mana -= calcSpawnCost(x, y) // client side tracking of action points
+		actionPoints -= calcSpawnCostAp(x, y) // client side tracking of action points
+		mana -= calcSpawnCostMana(x, y)
 		turnLog("SPAWN $x $y") // add the spawning to this turn's actions
 		
 		return this
 		
 	}
 	
-	fun calcSpawnCost(x: Int, y: Int) = SPAWN_COST
+	fun calcSpawnCostAp(x: Int, y: Int) = SPAWN_COST
+	fun calcSpawnCostMana(x: Int, y: Int) = SPAWN_MANA_COST
 	
 	/**
 	 * Places a new block right at the [x] and [y] off of you.
@@ -172,16 +175,20 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		assertTrue(y in -1..1, "y must be within -1 and 1")
 		
 //		make sure the bot can spawn another bot
-		assertManaPoints(calcPlaceBlock(), mana, "place")
+//		assertManaPoints(calcPlaceBlock(), mana, "place")
+		assertActionManaPoints(calcPlaceBlockCostAp(x, y), actionPoints, calcPlaceBlockCostMana(x, y), mana, "place")
 		
-		mana -= calcPlaceBlock() // client side tracking of action points
+		
+		actionPoints -= calcPlaceBlockCostAp(x, y) // client side tracking of action points
+		mana -= calcPlaceBlockCostMana(x, y)
 		turnLog("PLACE $x $y") // add the spawning to this turn's actions
 		
 		return this
 		
 	}
 	
-	fun calcPlaceBlock() = PLACE_COST
+	fun calcPlaceBlockCostAp(x: Int, y: Int) = PLACE_COST
+	fun calcPlaceBlockCostMana(x: Int, y: Int) = PLACE_MANA_COST
 	
 	/**
 	 * Adds a command onto this turn's actions
@@ -252,6 +259,8 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			
 		}
 		
+//		TODO: the following assert points functions can and should be static
+		
 		/**
 		 * Makes sure you can perform the action. Throws
 		 * an exception if you can't
@@ -279,6 +288,25 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 		private fun assertManaPoints(need: Int, have: Int, type: String) {
 			if (have - need < 0) throw NotEnoughManaPointsException(need, have, type)
 		}
+		
+		/**
+		 * Makes sure you can perform the action. Throws
+		 * an exception if you can't
+		 * 
+		 * @param apNeed How many action points you need
+		 * @param apHave How many action points you have
+		 * @param manaNeed How many mana points you need
+		 * @param manaHave How many mana points you have
+		 * @param type The name of the desired action
+		 * @throws NotEnoughManaPointsException if you can't perform the action with mana
+		 * @throws NotEnoughActionPointsException if you can't perform the action with ap
+		 * */
+		@Throws(NotEnoughActionPointsException::class, NotEnoughManaPointsException::class)
+		private fun assertActionManaPoints(apNeed: Int, apHave: Int, manaNeed: Int, manaHave: Int, type: String) {
+			assertActionPoints(apNeed, apHave, type)
+			assertManaPoints(manaNeed, manaHave, type)
+		}
+		
 	}
 	
 }

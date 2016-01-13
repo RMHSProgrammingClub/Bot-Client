@@ -19,14 +19,14 @@ class Game {
 	
 	/**
 	 * The version of the server this client is connected to.
+	 * 
+	 * "ruby" or "kotlin API_LEVEL"
+	 * ex: "ruby", "kotlin 1", "kotlin 2"
 	 * */
 	val serverVersion: String
 	
 	/**
 	 * The connection to the server.
-	 * 
-	 * "ruby" or "kotlin API_LEVEL"
-	 * ex: "ruby", "kotlin 1", "kotlin 2"
 	 * */
 	private val connection: ServerConnection
 	
@@ -41,7 +41,7 @@ class Game {
 		this.connection = ServerConnection(SOCKET_PORT)
 		
 //		send our compliance level
-		connection.writeln(SERVER_API_LEVEL)
+		connection.writeln(SERVER_VERSION)
 		
 		val command = connection.readLine()
 		if (!command.contains("START")) { // BotServer-kt support
