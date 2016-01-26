@@ -78,7 +78,7 @@ class Game {
 		
 		val command = connection.read()
 		
-`		if ("LOOSE" in command || "WIN" in command || "DRAW" in command) throw GameEnded(command)
+		if ("LOOSE" in command || "WIN" in command || "DRAW" in command) throw GameEnded(command)
 		
 		if (command == "END") {
 			val data = connection.read()
