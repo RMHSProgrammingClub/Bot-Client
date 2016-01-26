@@ -78,7 +78,13 @@ class Game {
 		
 		val command = connection.read()
 		
-		if ("LOOSE" in command || "WON" in command || "DRAW" in command) throw GameEnded(command)
+`		if ("LOOSE" in command || "WIN" in command || "DRAW" in command) throw GameEnded(command)
+		
+		if (command == "END") {
+			val data = connection.read()
+			if ("LOOSE" in data || "WIN" in data || "DRAW" in data) throw GameEnded(command)
+			else throw GameEnded("Error with game ended: $command")
+		}
 		
 		if (command != "START_TURN")
 			throw IOException("Command error: The server sent $command instead of the start command")
