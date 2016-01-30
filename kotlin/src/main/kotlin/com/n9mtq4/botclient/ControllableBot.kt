@@ -27,7 +27,7 @@ import java.util.ArrayList
  * @param actionPoints The number of action points the bot has
  * @param vision An array of [WorldObject]s that you can see
  */
-class ControllableBot(x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
+class ControllableBot(val uid: Int, x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
 	
 	var x = x
 		private set
@@ -223,9 +223,8 @@ class ControllableBot(x: Int, y: Int, angle: Int, val health: Int, actionPoints:
 			val parser = JSONParser()
 			val json: JSONObject = parser.parse(data) as JSONObject
 			
-//			TODO: json[str] has not been tested; possible revert to json.getRaw(str)
-			
 //			parse the things for the bot
+			val uid = ((json["uid"] ?: -1L) as Long).toInt() // bot id is -1 if server doesn't have support
 			val x = (json["x"] as Long).toInt()
 			val y = (json["y"] as Long).toInt()
 			val angle = (json["angle"] as Long).toInt()
@@ -267,7 +266,7 @@ class ControllableBot(x: Int, y: Int, angle: Int, val health: Int, actionPoints:
 				
 			}
 			
-			return ControllableBot(x, y, angle, health, actionPoints, mana, vision)
+			return ControllableBot(uid, x, y, angle, health, actionPoints, mana, vision)
 			
 		}
 		
