@@ -1,4 +1,4 @@
-group 'BotClient-Kotlin'
+group 'BotClient'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -23,7 +23,7 @@ dependencies {
     compile "com.googlecode.json-simple:json-simple:1.1.1"
 }
 buildscript {
-    ext.kotlin_version = '1.0.0-beta-2423'
+    ext.kotlin_version = '1.0.0-beta-4589'
 //    ext.dokka_version = '0.9.3'
     repositories {
         mavenCentral()
@@ -35,6 +35,15 @@ buildscript {
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 }
+
 jar {
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    baseName = project.name + "-Kotlin"
 }
+
+task fatJar(type: Jar) {
+    baseName = project.name + "-Java"
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+build.dependsOn fatJar
