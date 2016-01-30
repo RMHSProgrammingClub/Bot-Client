@@ -239,9 +239,9 @@ class ControllableBot(x: Int, y: Int, angle: Int, val health: Int, actionPoints:
 			visionJson.map { it as JSONObject }.forEach {
 				
 //				stuff everything has
-				val type = it.get("type") as String
-				val vx = (it.get("x") as Long).toInt()
-				val vy = (it.get("y") as Long).toInt()
+				val type = it["type"] as String
+				val vx = (it["x"] as Long).toInt()
+				val vy = (it["y"] as Long).toInt()
 				
 //				stuff only some things have
 				if (type.equals("bot", true)) {
