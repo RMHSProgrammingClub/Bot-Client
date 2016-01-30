@@ -7,14 +7,14 @@ You can download compiled versions of this API here: https://github.com/RMHSProg
 ### How to use
 Please reference the wiki for the documentation and in depth instructions on how to begin. Here: https://github.com/RMHSProgrammingClub/Bot-Game/wiki
 ### How to build
- - Download and install IntelliJ here: https://www.jetbrains.com/idea/
  - Download / clone this repository
  - Unzip the repository if necessary
  - cd to the directory
  - run this command 
    - linux / osx - "./gradlew build"
    - windows - "./gradlew.bat build" (not tested, may not work)
- - Yay! Your compiled client is now located under build/libs/BotClient-Kotlin.jar
+ - Yay! Your compiled client is now located under build/libs/
+
 ### Importing into IntelliJ
  - Download and install IntelliJ here: https://www.jetbrains.com/idea/
  - Download / clone this repository
@@ -29,4 +29,4 @@ Please reference the wiki for the documentation and in depth instructions on how
  - Inside the project, under the "Gradle" sidebar:
    - Manually refresh all gradle projects
    - Double click on Tasks/build/build
- - Yay! Your compiled client is now located under build/libs/BotClient-Kotlin.jar
+ - Yay! Your compiled client is now located under build/libs/
