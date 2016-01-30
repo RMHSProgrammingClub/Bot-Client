@@ -78,6 +78,7 @@ class Game {
 		
 		val command = connection.read()
 		
+//		TODO: deprecated - as of commit 55df0f6 (above v1.0.6-beta) this will not happen; only for backwards compatibility
 		if ("LOOSE" in command || "WIN" in command || "DRAW" in command) throw GameEnded(command)
 		
 		if (command == "END") {
