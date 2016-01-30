@@ -10,7 +10,6 @@ import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 import java.io.IOException
 import java.util.ArrayList
-import kotlin.test.assertTrue
 
 /**
  * Created by will on 11/24/15 at 3:16 PM.
@@ -28,7 +27,18 @@ import kotlin.test.assertTrue
  * @param actionPoints The number of action points the bot has
  * @param vision An array of [WorldObject]s that you can see
  */
-data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: Int, var actionPoints: Int, var mana: Int, val vision: ArrayList<WorldObject>) {
+class ControllableBot(x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
+	
+	var x = x
+		private set
+	var y = y
+		private set
+	var angle = angle
+		private set
+	var actionPoints = actionPoints
+		private set
+	var mana = mana
+		private set
 	
 	/**
 	 * A list of all the actions that
@@ -213,41 +223,43 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			val parser = JSONParser()
 			val json: JSONObject = parser.parse(data) as JSONObject
 			
+//			TODO: json[str] has not been tested; possible revert to json.getRaw(str)
+			
 //			parse the things for the bot
-			val x = (json.getRaw("x") as Long).toInt()
-			val y = (json.getRaw("y") as Long).toInt()
-			val angle = (json.getRaw("angle") as Long).toInt()
-			val health = (json.getRaw("health") as Long).toInt()
-			val actionPoints = (json.getRaw("ap") as Long).toInt()
-			val mana = (json.getRaw("mana") as Long).toInt()
+			val x = (json["x"] as Long).toInt()
+			val y = (json["y"] as Long).toInt()
+			val angle = (json["angle"] as Long).toInt()
+			val health = (json["health"] as Long).toInt()
+			val actionPoints = (json["ap"] as Long).toInt()
+			val mana = (json["mana"] as Long).toInt()
 			
 //			start vision parsing
-			val visionJson = json.getRaw("vision") as JSONArray
+			val visionJson = json["vision"] as JSONArray
 			val vision = ArrayList<WorldObject>()
 			visionJson.map { it as JSONObject }.forEach {
 				
 //				stuff everything has
-				val type = it.getRaw("type") as String
-				val vx = (it.getRaw("x") as Long).toInt()
-				val vy = (it.getRaw("y") as Long).toInt()
+				val type = it.get("type") as String
+				val vx = (it.get("x") as Long).toInt()
+				val vy = (it.get("y") as Long).toInt()
 				
 //				stuff only some things have
 				if (type.equals("bot", true)) {
 //					bots have a team, angle, and health
-					val vteam = (it.getRaw("team") as Long).toInt()
-					val vangle = (it.getRaw("angle") as Long).toInt()
-					val vhealth = (it.getRaw("health") as Long).toInt()
+					val vteam = (it["team"] as Long).toInt()
+					val vangle = (it["angle"] as Long).toInt()
+					val vhealth = (it["health"] as Long).toInt()
 					vision.add(Bot(vx, vy, vangle, vhealth, vteam))
 				}else if (type.equals("block", true)) {
 //					blocks have health
-					val vhealth = (it.getRaw("health") as Long).toInt()
+					val vhealth = (it["health"] as Long).toInt()
 					vision.add(Block(x, y, vhealth, true, BlockType.BLOCK))
 				}else if (type.equals("wall", true)) {
 //					walls are generic
 					vision.add(Block(x ,y, 100, false, BlockType.WALL))
 				}else if (type.equals("flag", true)) {
 //					flags have a team
-					val vteam = (it.getRaw("team") as Long).toInt()
+					val vteam = (it["team"] as Long).toInt()
 					vision.add(Flag(x, y, vteam))
 				}else {
 					throw IOException("Error reading vision data:\n$data")
@@ -257,54 +269,6 @@ data class ControllableBot(var x: Int, var y: Int, var angle: Int, val health: I
 			
 			return ControllableBot(x, y, angle, health, actionPoints, mana, vision)
 			
-		}
-		
-//		TODO: the following assert points functions can and should be static
-		
-		/**
-		 * Makes sure you can perform the action. Throws
-		 * an exception if you can't
-		 *
-		 * @param need How many action points you need
-		 * @param have How many action points you have
-		 * @param type The name of the desired action
-		 * @throws NotEnoughActionPointsException if you can't perform the action
-		 * */
-		@Throws(NotEnoughActionPointsException::class)
-		private fun assertActionPoints(need: Int, have: Int, type: String) {
-			if (have - need < 0) throw NotEnoughActionPointsException(need, have, type)
-		}
-		
-		/**
-		 * Makes sure you can perform the action. Throws
-		 * an exception if you can't
-		 *
-		 * @param need How many mana points you need
-		 * @param have How many mana points you have
-		 * @param type The name of the desired action
-		 * @throws NotEnoughManaPointsException if you can't perform the action
-		 * */
-		@Throws(NotEnoughManaPointsException::class)
-		private fun assertManaPoints(need: Int, have: Int, type: String) {
-			if (have - need < 0) throw NotEnoughManaPointsException(need, have, type)
-		}
-		
-		/**
-		 * Makes sure you can perform the action. Throws
-		 * an exception if you can't
-		 * 
-		 * @param apNeed How many action points you need
-		 * @param apHave How many action points you have
-		 * @param manaNeed How many mana points you need
-		 * @param manaHave How many mana points you have
-		 * @param type The name of the desired action
-		 * @throws NotEnoughManaPointsException if you can't perform the action with mana
-		 * @throws NotEnoughActionPointsException if you can't perform the action with ap
-		 * */
-		@Throws(NotEnoughActionPointsException::class, NotEnoughManaPointsException::class)
-		private fun assertActionManaPoints(apNeed: Int, apHave: Int, manaNeed: Int, manaHave: Int, type: String) {
-			assertActionPoints(apNeed, apHave, type)
-			assertManaPoints(manaNeed, manaHave, type)
 		}
 		
 	}
