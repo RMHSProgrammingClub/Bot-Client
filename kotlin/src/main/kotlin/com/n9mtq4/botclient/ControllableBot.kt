@@ -8,7 +8,6 @@ import com.n9mtq4.botclient.world.WorldObject
 import org.json.simple.JSONArray
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
-import java.io.IOException
 import java.util.ArrayList
 
 /**
@@ -261,7 +260,8 @@ class ControllableBot(val uid: Int, x: Int, y: Int, angle: Int, val health: Int,
 					val vteam = (it["team"] as Long).toInt()
 					vision.add(Flag(x, y, vteam))
 				}else {
-					throw IOException("Error reading vision data:\n$data")
+//					throw IOException("Error reading vision data:\n$data")
+					throw ClientNetworkException("Error reading vision", "vision data", data)
 				}
 				
 			}

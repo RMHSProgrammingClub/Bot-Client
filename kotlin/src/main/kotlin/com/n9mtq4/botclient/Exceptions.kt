@@ -1,5 +1,7 @@
 package com.n9mtq4.botclient
 
+import java.io.IOException
+
 /*
 * 
 * NOTICE THAT THIS FILE HAS VERY LONG LINES
@@ -16,9 +18,7 @@ package com.n9mtq4.botclient
  * @author Will "n9Mtq4" Bresnahan
  */
 class NotEnoughActionPointsException(msg: String) : CantPerformActionException(msg) {
-	
 	constructor(need: Int, have: Int, action: String) : this("Not enough action points to perform action: $action. Need: $need, have: $have, diff:${have - need}!")
-	
 }
 
 /**
@@ -30,9 +30,7 @@ class NotEnoughActionPointsException(msg: String) : CantPerformActionException(m
  * @author Will "n9Mtq4" Bresnahan
  */
 class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg) {
-	
 	constructor(need: Int, have: Int, action: String) : this("Not enough mana points to perform action: $action. Need: $need, have: $have, diff:${have - need}!")
-	
 }
 
 /**
@@ -45,3 +43,10 @@ class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg
  * @author Will "n9Mtq4" Bresnahan
  */
 open class CantPerformActionException(val msg: String) : Exception(msg)
+
+/**
+ * This exception is thrown when the game is ended
+ * */
+class GameEnded(val data: String) : Exception("Game has ended with data: $data")
+
+class ClientNetworkException(msg: String, expected: String, actual: String) : IOException("$msg: EXPECTED: \"$expected\", GOT: \"$actual\"")

@@ -16,14 +16,16 @@ fun main(args: Array<String>) {
 	try {
 		while (true) {
 			
-			val bot = game.waitForTurn()
+			val bot = game() // you can now do this!
 			
 			bot.move(0, if (game.team == 1) 1 else -1); // move forward
 			
+//			debug printing
 			println(bot.vision.toString())
 			println(bot.vision.size)
+			println(bot.uid)
 			
-			game.endTurn(bot)
+			game endTurn bot
 			
 		}
 	}catch (e: GameEnded) {

@@ -1,7 +1,5 @@
 package com.n9mtq4.botclient
 
-import java.io.IOException
-
 /**
  * Created by will on 11/24/15 at 3:14 PM.
  * 
@@ -9,13 +7,7 @@ import java.io.IOException
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-class Game {
-	
-	/**
-	 * Your team number.
-	 * So far it is either 1 or 2
-	 * */
-	val team: Int
+class Game() {
 	
 	/**
 	 * The version of the server this client is connected to.
@@ -31,6 +23,17 @@ class Game {
 	private val connection: ServerConnection
 	
 	/**
+	 * Your team number.
+	 * So far it is either 1 or 2
+	 * */
+	val team: Int
+	
+	/**
+	 * The compliance level that this client is running at
+	 * */
+	val currentCompliance: String
+	
+	/**
 	 * Constructor for the Game
 	 * 
 	 * Makes sure that the game should
@@ -38,14 +41,17 @@ class Game {
 	 * */
 	init {
 		
-		this.connection = ServerConnection(SOCKET_PORT)
+		val port = System.getProperty(PropertyDictionary.SERVER_PORT)?.toInt() ?: SOCKET_PORT
+		this.connection = ServerConnection(port)
 		
 //		send our compliance level
-		connection.writeln(SERVER_VERSION)
+		this.currentCompliance = System.getProperty(PropertyDictionary.COMPLIANCE_LEVEL) ?: SERVER_VERSION
+		if (currentCompliance != SERVER_VERSION) println("[WARNING]: Not using the client's compliance level, forcing the use of: \"$currentCompliance\"")
+		connection.writeln(currentCompliance)
 		
 		val command = connection.readLine()
 		if (!command.contains("START")) { // BotServer-kt support
-			throw IOException("Command error: Expected 'START', got '$command'")
+			throw ClientNetworkException("Command error", "START", command)
 		}
 		
 //		Version checking. Only works with BotServer-kt
@@ -53,10 +59,10 @@ class Game {
 			val version = command.substring("START API ".length).toInt()
 			this.serverVersion = "kotlin $version"
 			if (version < API_LEVEL) {
-				println("ERROR: the server is running a newer version than the client. Please update this API to support the newer server.")
+				System.err.println("[ERROR]: the server is running a newer version than the client. Please update this API to support the newer server.")
 				System.exit(-1)
 			}else if (version != API_LEVEL) {
-				println("WARNING: the server and the client are running a different version.")
+				println("[WARNING]: the server and the client are running a different version.")
 			}
 		}else {
 			this.serverVersion = "ruby"
@@ -66,6 +72,8 @@ class Game {
 		println("Team Number: $team")
 		
 	}
+	
+	operator fun invoke() = waitForTurn()
 	
 	/**
 	 * Halts, waiting for input through StdIn
@@ -84,11 +92,11 @@ class Game {
 		if (command == "END") {
 			val data = connection.read()
 			if ("LOOSE" in data || "WIN" in data || "DRAW" in data) throw GameEnded(command)
-			else throw GameEnded("Error with game ended: $command")
+			else throw ClientNetworkException("Error with game end", "LOOSE || WIN || DRAW", command)
 		}
 		
 		if (command != "START_TURN")
-			throw IOException("Command error: The server sent $command instead of the start command")
+			throw ClientNetworkException("Command Error", "START_TURN", command)
 		
 		return readAndMakeBot()
 		
@@ -98,13 +106,7 @@ class Game {
 	 * Ends your turn and writes the actions that your bot
 	 * has done this turn to a file
 	 * */
-	fun endTurn(controllableBot: ControllableBot) {
-		
-/*		var log = ""
-		controllableBot.turnLog.forEach { log += it + "\n" }
-		log += "END\n"
-		
-		connection.writeLogLine(log)*/
+	infix fun endTurn(controllableBot: ControllableBot) {
 		
 		connection.writeWholeLog(controllableBot.turnLog)
 		
