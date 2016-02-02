@@ -1,3 +1,4 @@
+@file:JvmName("BotClientConstants")
 package com.n9mtq4.botclient
 
 /**
