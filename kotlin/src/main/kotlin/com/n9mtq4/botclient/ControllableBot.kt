@@ -26,8 +26,13 @@ import java.util.ArrayList
  * @param actionPoints The number of action points the bot has
  * @param vision An array of [WorldObject]s that you can see
  */
-class ControllableBot(val uid: Int, x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
+class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
 	
+	val uid = uid
+		get() {
+			if (field == -1) System.err.println("[WARNING]: BotServer doesn't have UID, returning -1")
+			return field
+		}
 	var x = x
 		private set
 	var y = y
