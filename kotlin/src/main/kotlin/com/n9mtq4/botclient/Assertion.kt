@@ -8,6 +8,8 @@ package com.n9mtq4.botclient
 private fun stopJavadoc() {}
 
 @Throws(AssertionError::class)
+fun assertTrue(condition: Boolean) = assertTrue(condition, "")
+@Throws(AssertionError::class)
 fun assertTrue(condition: Boolean, msg: String) { if (!condition) throw AssertionError(msg) }
 @Throws(AssertionError::class)
 fun assertFalse(antiCondition: Boolean, msg: String) = assertTrue(!antiCondition, msg)
