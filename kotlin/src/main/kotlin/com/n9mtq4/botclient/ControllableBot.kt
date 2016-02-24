@@ -19,6 +19,9 @@ import java.util.ArrayList
  * 
  * @author Will "n9Mtq4" Bresnahan
  * 
+ * @property health the health of the bot
+ * @property vision an array of what the bot can see
+ * 
  * @param x The x position
  * @param y the y position
  * @param angle The angle in degrees
@@ -28,19 +31,38 @@ import java.util.ArrayList
  */
 class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
 	
+	/**
+	 * The UID of the bot
+	 * returns -1 if the server doesn't have support
+	 * */
 	val uid = uid
 		get() {
 			if (field == -1) System.err.println("[WARNING]: BotServer doesn't have UID, returning -1")
 			return field
 		}
+	/**
+	 * The x pos of the bot
+	 * */
 	var x = x
 		private set
+	/**
+	 * The y pos of the bot
+	 * */
 	var y = y
 		private set
+	/**
+	 * The angle in degrees of the bot
+	 * */
 	var angle = angle
 		private set
+	/**
+	 * The number of action points the bot has
+	 * */
 	var actionPoints = actionPoints
 		private set
+	/**
+	 * The amount of mana the bot has
+	 * */
 	var mana = mana
 		private set
 	
@@ -90,6 +112,10 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 		
 	}
 	
+	/**
+	 * Calculates the action point cost of
+	 * moving
+	 * */
 	fun calcMoveCost(x: Int, y: Int) = MOVEMENT_COST
 	
 	/**
@@ -118,6 +144,10 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 		
 	}
 	
+	/**
+	 * Calculates the action point cost of
+	 * turning
+	 * */
 	fun calcTurnCost(angle: Int) = Math.abs(Math.ceil((angle / TURN_COST).toDouble())).toInt()
 	
 	/**
@@ -140,6 +170,10 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 		
 	}
 	
+	/**
+	 * Calculates the action point cost of
+	 * shooting
+	 * */
 	fun calcShootCost() = SHOOT_COST
 	
 	/**
@@ -170,7 +204,15 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 		
 	}
 	
+	/**
+	 * Calculates the action point cost of
+	 * spawning another bot
+	 * */
 	fun calcSpawnCostAp(x: Int, y: Int) = SPAWN_COST
+	/**
+	 * Calculates the mana point cost of
+	 * spawning another bot
+	 * */
 	fun calcSpawnCostMana(x: Int, y: Int) = SPAWN_MANA_COST
 	
 	/**
@@ -201,7 +243,15 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 		
 	}
 	
+	/**
+	 * Calculates the action point cost of
+	 * placing a block
+	 * */
 	fun calcPlaceBlockCostAp(x: Int, y: Int) = PLACE_COST
+	/**
+	 * Calculates the mana point cost of
+	 * placing a bot
+	 * */
 	fun calcPlaceBlockCostMana(x: Int, y: Int) = PLACE_MANA_COST
 	
 	/**
@@ -211,6 +261,9 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 		turnLog.add(msg)
 	}
 	
+	/**
+	 * Contains the buildBot method
+	 * */
 	companion object {
 		/**
 		 * Creates a [ControllableBot] from the data provided from

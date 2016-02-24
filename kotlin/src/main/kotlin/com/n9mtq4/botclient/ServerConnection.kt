@@ -11,14 +11,17 @@ import java.net.SocketException
  * Created by will on 11/27/15 at 11:16 PM.
  *
  * Handles all the client to server connections
- *
+ * 
+ * @property port the port to connect to
+ * @param port the port to connect to
+ * 
  * @author Will "n9Mtq4" Bresnahan
  */
 class ServerConnection(val port: Int) {
 	
-	internal val client: Socket
-	internal val input: BufferedReader
-	internal val output: PrintWriter
+	private val client: Socket
+	private val input: BufferedReader
+	private val output: PrintWriter
 	
 	init {
 		println("Connecting to server...")

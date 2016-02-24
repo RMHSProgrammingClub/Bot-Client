@@ -5,12 +5,22 @@ package com.n9mtq4.botclient
  *
  * @author Will "n9Mtq4" Bresnahan
  */
-private fun stopJavadoc() {}
 
+/**
+ * Asserts that the [condition] is true
+ * */
 @Throws(AssertionError::class)
 fun assertTrue(condition: Boolean) = assertTrue(condition, "")
+/**
+ * Asserts that the [condition] is true. if not, it
+ * throws an [AssertionError] with the [msg]
+ * */
 @Throws(AssertionError::class)
 fun assertTrue(condition: Boolean, msg: String) { if (!condition) throw AssertionError(msg) }
+/**
+ * Asserts that the [antiCondition] is false. if not, it
+ * throws an [AssertionError] with the [msg]
+ * */
 @Throws(AssertionError::class)
 fun assertFalse(antiCondition: Boolean, msg: String) = assertTrue(!antiCondition, msg)
 

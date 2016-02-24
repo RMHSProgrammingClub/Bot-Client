@@ -41,6 +41,7 @@ class Game() {
 	 * */
 	init {
 		
+//		get the socket port to connect to
 		val port = System.getProperty(PropertyDictionary.SERVER_PORT)?.toInt() ?: SOCKET_PORT
 		this.connection = ServerConnection(port)
 		
@@ -50,12 +51,12 @@ class Game() {
 		connection.writeln(currentCompliance)
 		
 		val command = connection.readLine()
-		if (!command.contains("START")) { // BotServer-kt support
-			throw ClientNetworkException("Command error", "START", command)
-		}
+//		verify the integrity of the start command
+		if (!command.contains("START")) throw ClientNetworkException("Command error", "START", command)
 		
 //		Version checking. Only works with BotServer-kt
 		if (command.contains("API")) {
+//			we now know that this is a kotlin server
 			val version = command.substring("START API ".length).toInt()
 			this.serverVersion = "kotlin $version"
 			if (version < API_LEVEL) {
@@ -65,18 +66,27 @@ class Game() {
 				println("[WARNING]: the server and the client are running a different version.")
 			}
 		}else {
+//			this is a ruby server
 			this.serverVersion = "ruby"
 		}
 		
+//		get our team information
 		team = connection.readLine().toInt()
 		println("Team Number: $team")
 		
 	}
 	
+	/**
+	 * Kotlin method. Allows getting the bot like:
+	 * ```kotlin
+	 * val game = Game()
+	 * val bot = game()
+	 * ```
+	 * */
 	operator fun invoke() = waitForTurn()
 	
 	/**
-	 * Halts, waiting for input through StdIn
+	 * Halts, waiting for input through the socket
 	 * when it receives the Start turn command, it
 	 * makes a bot for that turn and returns it
 	 * 
@@ -89,14 +99,15 @@ class Game() {
 //		TODO: deprecated - as of commit 55df0f6 (above v1.0.6-beta) this will not happen; only for backwards compatibility
 		if ("LOOSE" in command || "WIN" in command || "DRAW" in command) throw GameEnded(command)
 		
+//		check if the game has ended
 		if (command == "END") {
 			val data = connection.read()
 			if ("LOOSE" in data || "WIN" in data || "DRAW" in data) throw GameEnded(command)
 			else throw ClientNetworkException("Error with game end", "LOOSE || WIN || DRAW", command)
 		}
 		
-		if (command != "START_TURN")
-			throw ClientNetworkException("Command Error", "START_TURN", command)
+//		if it hasn't ended, then make sure that the turn has started
+		if (command != "START_TURN") throw ClientNetworkException("Command Error", "START_TURN", command)
 		
 		return readAndMakeBot()
 		
@@ -108,6 +119,7 @@ class Game() {
 	 * */
 	infix fun endTurn(controllableBot: ControllableBot) {
 		
+//		write the turn log to the socket and flush it
 		connection.writeWholeLog(controllableBot.turnLog)
 		
 	}

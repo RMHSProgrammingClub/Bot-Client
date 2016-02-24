@@ -10,7 +10,13 @@ package com.n9mtq4.botclient.world
  */
 interface WorldObject {
 	
+	/**
+	 * The x pos of the WorldObject
+	 * */
 	val x: Int
+	/**
+	 * The y pos of the WorldObject
+	 * */
 	val y: Int
 	
 	/**

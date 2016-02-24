@@ -15,9 +15,16 @@ import java.io.IOException
  * This exception is thrown when you don't have enough action points to
  * do something.
  * 
+ * @param msg the msg
  * @author Will "n9Mtq4" Bresnahan
  */
 class NotEnoughActionPointsException(msg: String) : CantPerformActionException(msg) {
+	/**
+	 * Generates a message based on [need], [have], and [action]
+	 * @param need the ap needed
+	 * @param have the ap that you have
+	 * @param action the action trying to be performed
+	 * */
 	constructor(need: Int, have: Int, action: String) : this("Not enough action points to perform action: $action. Need: $need, have: $have, diff:${have - need}!")
 }
 
@@ -30,6 +37,12 @@ class NotEnoughActionPointsException(msg: String) : CantPerformActionException(m
  * @author Will "n9Mtq4" Bresnahan
  */
 class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg) {
+	/**
+	 * Generates a message based on [need], [have], and [action]
+	 * @param need the mana needed
+	 * @param have the mana that you have
+	 * @param action the action trying to be performed
+	 * */
 	constructor(need: Int, have: Int, action: String) : this("Not enough mana points to perform action: $action. Need: $need, have: $have, diff:${have - need}!")
 }
 
@@ -39,14 +52,29 @@ class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg
  * This exception is thrown when you can't perform an action.
  * The superclass for [NotEnoughActionPointsException] and
  * [NotEnoughManaPointsException].
- *
+ * 
+ * @param msg the msg
+ * @property msg the message
  * @author Will "n9Mtq4" Bresnahan
  */
 open class CantPerformActionException(val msg: String) : Exception(msg)
 
 /**
  * This exception is thrown when the game is ended
+ * 
+ * @param data the data of the end turn command
+ * @property data the data of the end turn command
+ * @author Will "n9Mtq4" Bresnahan
  * */
 class GameEnded(val data: String) : Exception("Game has ended with data: $data")
 
+/**
+ * This exception is thrown when the client gets wrong input from the server
+ * 
+ * @param msg the message
+ * @param expected the expected server input
+ * @param actual the actual server input
+ * 
+ * @author Will "n9Mtq4" Bresnahan
+ * */
 class ClientNetworkException(msg: String, expected: String, actual: String) : IOException("$msg: EXPECTED: \"$expected\", GOT: \"$actual\"")
