@@ -8,7 +8,7 @@ apply plugin: 'org.jetbrains.dokka'
 sourceCompatibility = 1.5
 
 group = 'com.n9mtq4'
-version = '1.0.6-beta'
+version = 'v1.0.7-kt-mt'
 
 repositories {
     mavenCentral()
