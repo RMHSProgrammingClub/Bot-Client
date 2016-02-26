@@ -12,7 +12,7 @@ import java.util.ArrayList
 
 /**
  * A bot that you can control.
- * These are received when you call [com.n9mtq4.botclient.Game.waitForTurn]
+ * These are received when you call game.waitForTurn
  * Not technically a part of the world.
  * 
  * Created by will on 11/24/15 at 3:16 PM.

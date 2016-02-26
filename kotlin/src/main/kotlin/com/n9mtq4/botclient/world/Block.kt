@@ -1,12 +1,12 @@
 package com.n9mtq4.botclient.world
 
 /**
- * Created by will on 11/24/15 at 3:20 PM.
- * 
  * A Block / Obstacle in the world
  * Both "Blocks" and "Walls" are instances of this class
  * You can tell the difference by using
  * [WorldObject.isBlock] or [WorldObject.isWall]
+ * 
+ * Created by will on 11/24/15 at 3:20 PM.
  * 
  * @param x the x pos of the block
  * @param y the y pos of the block
