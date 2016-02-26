@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<title>Block - BotClient</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">BotClient</a>&nbsp;/&nbsp;<a href="../index.html">com.n9mtq4.botclient.world</a>&nbsp;/&nbsp;<a href=".">Block</a><br/>
+<br/>
+<h1>Block</h1>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Block</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-world-object/index.html"><span class="identifier">WorldObject</span></a></code><br/>
+<p>A Block / Obstacle in the world
+Both "Blocks" and "Walls" are instances of this class
+You can tell the difference by using
+<a href="../-world-object/is-block.html">WorldObject.isBlock</a> or <a href="../-world-object/is-wall.html">WorldObject.isWall</a></p>
+<p>Created by will on 11/24/15 at 3:20 PM.</p>
+<br/>
+<br/>
+<h3>Parameters</h3>
+<a name="x"></a>
+<code>x</code> - the x pos of the block<br/>
+<br/>
+<a name="y"></a>
+<code>y</code> - the y pos of the block<br/>
+<br/>
+<a name="health"></a>
+<code>health</code> - the health of the bot<br/>
+<br/>
+<a name="isBreakable"></a>
+<code>isBreakable</code> - if the block is breakable<br/>
+<br/>
+<a name="type"></a>
+<code>type</code> - what type of block this block is<br/>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">Block</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.world.Block$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Boolean, com.n9mtq4.botclient.world.BlockType)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Block$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Boolean, com.n9mtq4.botclient.world.BlockType)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Block$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Boolean, com.n9mtq4.botclient.world.BlockType)/health">health</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Block$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Boolean, com.n9mtq4.botclient.world.BlockType)/isBreakable">isBreakable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Block$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Boolean, com.n9mtq4.botclient.world.BlockType)/type">type</span><span class="symbol">:</span>&nbsp;<a href="../-block-type/index.html"><span class="identifier">BlockType</span></a><span class="symbol">)</span></code><p>A Block / Obstacle in the world
+Both "Blocks" and "Walls" are instances of this class
+You can tell the difference by using
+<a href="../-world-object/is-block.html">WorldObject.isBlock</a> or <a href="../-world-object/is-wall.html">WorldObject.isWall</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="health.html">health</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">health</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the health of the bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="is-breakable.html">isBreakable</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">isBreakable</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>if the block is breakable</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="type.html">type</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">type</span><span class="symbol">: </span><a href="../-block-type/index.html"><span class="identifier">BlockType</span></a></code><p>what type of block this block is</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="x.html">x</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">x</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the x pos of the block</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="y.html">y</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">y</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the y pos of the block</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="../-world-object/is-block.html">isBlock</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isBlock</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the object is a block.
+Will return false if the obstacle is
+a wall</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../-world-object/is-bot.html">isBot</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isBot</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the world object
+is a bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../-world-object/is-obstacle.html">isObstacle</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isObstacle</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the world object
+is a block (by extension also a wall)</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../-world-object/is-wall.html">isWall</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isWall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the object is a wall
+Will return false if the obstacle is
+a block. (even though a wall is a block)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

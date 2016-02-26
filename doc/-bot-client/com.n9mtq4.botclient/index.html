@@ -1,0 +1,320 @@
+<HTML>
+<HEAD>
+<title>com.n9mtq4.botclient - BotClient</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">BotClient</a>&nbsp;/&nbsp;<a href=".">com.n9mtq4.botclient</a><br/>
+<br/>
+<h2>Package com.n9mtq4.botclient</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-controllable-bot/index.html">ControllableBot</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ControllableBot</span></code><p>A bot that you can control.
+These are received when you call game.waitForTurn
+Not technically a part of the world.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-game/index.html">Game</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Game</span></code><p>An object for the currently running game.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-property-dictionary/index.html">PropertyDictionary</a></td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">PropertyDictionary</span></code><p>Contains dictionary keys for client settings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-server-connection/index.html">ServerConnection</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ServerConnection</span></code><p>Handles all the client to server connections</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-cant-perform-action-exception/index.html">CantPerformActionException</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CantPerformActionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Exception.html"><span class="identifier">Exception</span></a></code><p>This exception is thrown when you cant perform an action.
+The superclass for <a href="-not-enough-action-points-exception/index.html">NotEnoughActionPointsException</a> and
+<a href="-not-enough-mana-points-exception/index.html">NotEnoughManaPointsException</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-client-network-exception/index.html">ClientNetworkException</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ClientNetworkException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/6/docs/api/java/io/IOException.html"><span class="identifier">IOException</span></a></code><p>This exception is thrown when the client gets wrong input from the server</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-game-ended/index.html">GameEnded</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GameEnded</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Exception.html"><span class="identifier">Exception</span></a></code><p>This exception is thrown when the game is ended</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-not-enough-action-points-exception/index.html">NotEnoughActionPointsException</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">NotEnoughActionPointsException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-cant-perform-action-exception/index.html"><span class="identifier">CantPerformActionException</span></a></code><p>This exception is thrown when you dont have enough action points to do something.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-not-enough-mana-points-exception/index.html">NotEnoughManaPointsException</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">NotEnoughManaPointsException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-cant-perform-action-exception/index.html"><span class="identifier">CantPerformActionException</span></a></code><p>This exception is thrown when you dont have enough mana points to do something.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-a-c-t-i-o-n_-p-o-i-n-t-s.html">ACTION_POINTS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">ACTION_POINTS</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The number of action points each bot gets per turn</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-a-p-i_-l-e-v-e-l.html">API_LEVEL</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">API_LEVEL</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the api level of the client</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-b-l-o-c-k_-h-e-a-l-t-h.html">BLOCK_HEALTH</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">BLOCK_HEALTH</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The starting health of each block</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-b-l-o-c-k_-h-i-t_-l-o-s-s.html">BLOCK_HIT_LOSS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">BLOCK_HIT_LOSS</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The health that is lost when a block gets shot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-b-o-t-s_-t-o_-w-i-n.html">BOTS_TO_WIN</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">BOTS_TO_WIN</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The bots needed to surround the flag to win</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-b-o-t_-h-e-a-l-t-h.html">BOT_HEALTH</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">BOT_HEALTH</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The starting health of each bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-b-o-t_-h-i-t_-l-o-s-s.html">BOT_HIT_LOSS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">BOT_HIT_LOSS</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The health that is lost when a bot gets shot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-b-o-t_-s-p-a-c-i-n-g.html">BOT_SPACING</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">BOT_SPACING</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The spacing between each bot when they are spawned</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-f-o-v.html">FOV</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">FOV</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The angle that the bot can see</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-m-a-n-a_-p-e-r_-t-u-r-n.html">MANA_PER_TURN</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">MANA_PER_TURN</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The amount of mana that each team gains per turn</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-m-a-p_-h-e-i-g-h-t.html">MAP_HEIGHT</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">MAP_HEIGHT</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The height of the map</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-m-a-p_-w-i-d-t-h.html">MAP_WIDTH</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">MAP_WIDTH</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The width of the map</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-m-a-x_-m-a-n-a.html">MAX_MANA</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">MAX_MANA</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The starting mana amount</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-m-a-x_-t-u-r-n-s.html">MAX_TURNS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">MAX_TURNS</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The max turns in a map
+Note: this can be overridden by a start param in the server, so dont use it in the client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-m-o-v-e-m-e-n-t_-c-o-s-t.html">MOVEMENT_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">MOVEMENT_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The action point cost of moving a bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-n-u-m_-b-l-o-c-k-s.html">NUM_BLOCKS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">NUM_BLOCKS</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The number of random blocks that are generated</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-n-u-m_-b-o-t-s.html">NUM_BOTS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">NUM_BOTS</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The number of bots per team</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-p-l-a-c-e_-c-o-s-t.html">PLACE_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">PLACE_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The action point cost of placing a block</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-p-l-a-c-e_-m-a-n-a_-c-o-s-t.html">PLACE_MANA_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">PLACE_MANA_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The amount of mana that it costs to place a new block</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-s-e-r-v-e-r_-v-e-r-s-i-o-n.html">SERVER_VERSION</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SERVER_VERSION</span><span class="symbol">: </span><span class="identifier">String</span></code><p>The version of the server that the client must have compliance with</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-s-h-o-o-t_-c-o-s-t.html">SHOOT_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SHOOT_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The action point cost of shooting</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-s-o-c-k-e-t_-p-o-r-t.html">SOCKET_PORT</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SOCKET_PORT</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the port the server is running on</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-s-p-a-w-n_-c-o-s-t.html">SPAWN_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SPAWN_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The action point cost of spawning a bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-s-p-a-w-n_-m-a-n-a_-c-o-s-t.html">SPAWN_MANA_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SPAWN_MANA_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The amount of mana that it costs to spawn a new bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-t-o_-d-e-g-r-e-e-s.html">TO_DEGREES</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">TO_DEGREES</span><span class="symbol">: </span><span class="identifier">Double</span></code><p>Multiplied by radians to get degrees</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-t-o_-r-a-d-i-a-n-s.html">TO_RADIANS</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">TO_RADIANS</span><span class="symbol">: </span><span class="identifier">Double</span></code><p>Multiplied by degrees to get radians</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-t-u-r-n-s_-i-n-v-u-l-n.html">TURNS_INVULN</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">TURNS_INVULN</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The number of turns that each bot cannot shoot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-t-u-r-n_-c-o-s-t.html">TURN_COST</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">TURN_COST</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The action point cost of turning a bot
+Higher is better. Calculated with cost = angle / TURN_COST</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="assert-false.html">assertFalse</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">assertFalse</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient$assertFalse(kotlin.Boolean, kotlin.String)/antiCondition">antiCondition</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient$assertFalse(kotlin.Boolean, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code><p>Asserts that the <a href="assert-false.html#com.n9mtq4.botclient$assertFalse(kotlin.Boolean, kotlin.String)/antiCondition">antiCondition</a> is false. if not, it
+throws an <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/AssertionError.html">AssertionError</a> with the <a href="assert-false.html#com.n9mtq4.botclient$assertFalse(kotlin.Boolean, kotlin.String)/msg">msg</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="assert-true.html">assertTrue</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">assertTrue</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient$assertTrue(kotlin.Boolean)/condition">condition</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code><p>Asserts that the <a href="assert-true.html#com.n9mtq4.botclient$assertTrue(kotlin.Boolean)/condition">condition</a> is true</p>
+<code><span class="keyword">fun </span><span class="identifier">assertTrue</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient$assertTrue(kotlin.Boolean, kotlin.String)/condition">condition</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient$assertTrue(kotlin.Boolean, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code><p>Asserts that the <a href="assert-true.html#com.n9mtq4.botclient$assertTrue(kotlin.Boolean, kotlin.String)/condition">condition</a> is true. if not, it
+throws an <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/AssertionError.html">AssertionError</a> with the <a href="assert-true.html#com.n9mtq4.botclient$assertTrue(kotlin.Boolean, kotlin.String)/msg">msg</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="main.html">main</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">main</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient$main(kotlin.Array((kotlin.String)))/args">args</span><span class="symbol">:</span>&nbsp;<span class="identifier">Array</span><span class="symbol">&lt;</span><span class="identifier">String</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code><p>THE MAIN METHOD TO TEST THE API.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

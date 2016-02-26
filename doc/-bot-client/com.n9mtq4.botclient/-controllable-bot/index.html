@@ -1,0 +1,205 @@
+<HTML>
+<HEAD>
+<title>ControllableBot - BotClient</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">BotClient</a>&nbsp;/&nbsp;<a href="../index.html">com.n9mtq4.botclient</a>&nbsp;/&nbsp;<a href=".">ControllableBot</a><br/>
+<br/>
+<h1>ControllableBot</h1>
+<code><span class="keyword">class </span><span class="identifier">ControllableBot</span></code><br/>
+<p>A bot that you can control.
+These are received when you call game.waitForTurn
+Not technically a part of the world.</p>
+<p>Created by will on 11/24/15 at 3:16 PM.</p>
+<br/>
+<br/>
+<strong>Author</strong><br/>
+Will "n9Mtq4" Bresnahan<br/>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">ControllableBot</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/uid">uid</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/angle">angle</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/health">health</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/actionPoints">actionPoints</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/mana">mana</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, java.util.ArrayList((com.n9mtq4.botclient.world.WorldObject)))/vision">vision</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/6/docs/api/java/util/ArrayList.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="../../com.n9mtq4.botclient.world/-world-object/index.html"><span class="identifier">WorldObject</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code><p>A bot that you can control.
+These are received when you call game.waitForTurn
+Not technically a part of the world.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="action-points.html">actionPoints</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">actionPoints</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The number of action points the bot has</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="angle.html">angle</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">angle</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The angle in degrees of the bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="health.html">health</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">health</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the health of the bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="mana.html">mana</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">mana</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The amount of mana the bot has</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="turn-log.html">turnLog</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">turnLog</span><span class="symbol">: </span><a href="http://docs.oracle.com/javase/6/docs/api/java/util/ArrayList.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><span class="identifier">String</span><span class="symbol">&gt;</span></code><p>A list of all the actions that
+will/did happen this turn</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="uid.html">uid</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">uid</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The UID of the bot
+returns -1 if the server doesnt have support</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="vision.html">vision</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">vision</span><span class="symbol">: </span><a href="http://docs.oracle.com/javase/6/docs/api/java/util/ArrayList.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="../../com.n9mtq4.botclient.world/-world-object/index.html"><span class="identifier">WorldObject</span></a><span class="symbol">&gt;</span></code><p>an array of what the bot can see</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="x.html">x</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">x</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The x pos of the bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="y.html">y</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">y</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>The y pos of the bot</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="calc-move-cost.html">calcMoveCost</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcMoveCost</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcMoveCost(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcMoveCost(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the action point cost of
+moving</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="calc-place-block-cost-ap.html">calcPlaceBlockCostAp</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcPlaceBlockCostAp</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcPlaceBlockCostAp(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcPlaceBlockCostAp(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the action point cost of
+placing a block</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="calc-place-block-cost-mana.html">calcPlaceBlockCostMana</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcPlaceBlockCostMana</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcPlaceBlockCostMana(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcPlaceBlockCostMana(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the mana point cost of
+placing a bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="calc-shoot-cost.html">calcShootCost</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcShootCost</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the action point cost of
+shooting</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="calc-spawn-cost-ap.html">calcSpawnCostAp</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcSpawnCostAp</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcSpawnCostAp(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcSpawnCostAp(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the action point cost of
+spawning another bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="calc-spawn-cost-mana.html">calcSpawnCostMana</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcSpawnCostMana</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcSpawnCostMana(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcSpawnCostMana(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the mana point cost of
+spawning another bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="calc-turn-cost.html">calcTurnCost</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">calcTurnCost</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$calcTurnCost(kotlin.Int)/angle">angle</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Calculates the action point cost of
+turning</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="move.html">move</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">move</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$move(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$move(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ControllableBot</span></code><p>Moves the bot in the x or y direction
+Remember: negative y is up, and positive is down</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="place-block.html">placeBlock</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">placeBlock</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$placeBlock(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$placeBlock(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ControllableBot</span></code><p>Places a new block right at the <a href="place-block.html#com.n9mtq4.botclient.ControllableBot$placeBlock(kotlin.Int, kotlin.Int)/x">x</a> and <a href="place-block.html#com.n9mtq4.botclient.ControllableBot$placeBlock(kotlin.Int, kotlin.Int)/y">y</a> off of you.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="shoot.html">shoot</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">shoot</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ControllableBot</span></code><p>Shoots a projectile from the bot.
+Uses the current angle for the shooting</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="spawn-bot.html">spawnBot</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">spawnBot</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$spawnBot(kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$spawnBot(kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ControllableBot</span></code><p>Spawns a new bot for your team off (<a href="spawn-bot.html#com.n9mtq4.botclient.ControllableBot$spawnBot(kotlin.Int, kotlin.Int)/x">x</a>, <a href="spawn-bot.html#com.n9mtq4.botclient.ControllableBot$spawnBot(kotlin.Int, kotlin.Int)/y">y</a>) of
+your bots current position.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="turn.html">turn</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">turn</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.ControllableBot$turn(kotlin.Int)/angle">angle</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ControllableBot</span></code><p>Turns the bot <a href="turn.html#com.n9mtq4.botclient.ControllableBot$turn(kotlin.Int)/angle">angle</a> degrees.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

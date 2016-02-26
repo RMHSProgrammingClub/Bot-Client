@@ -1,98 +1,127 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Bot-client by RMHSProgrammingClub</title>
+    <title>BotClient-Kt HomePage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Bot-client</h1>
-      <h2 class="project-tagline">A multiplayer game designed to be played by robots</h2>
-      <a href="https://github.com/RMHSProgrammingClub/Bot-Client" class="btn">View on GitHub</a>
-      <a href="https://github.com/RMHSProgrammingClub/Bot-Client/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/RMHSProgrammingClub/Bot-Client/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+</head>
+<body>
 
-    <section class="main-content">
-      <h1>
-<a id="botclient-kt" class="anchor" href="#botclient-kt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BotClient-Kt</h1>
+<a href="https://github.com/RMHSProgrammingClub/Bot-Client/tree/master/kotlin"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 
-<hr>
+<section class="page-header">
+    <h1 class="project-name">BotClient-Kt</h1>
+    <h2 class="project-tagline">The API for a multiplayer game designed to be played by robots</h2>
+    <!--<a href="https://github.com/RMHSProgrammingClub/Bot-Client" class="btn">View on GitHub</a>-->
+    <a href="https://github.com/RMHSProgrammingClub/Bot-Client/releases/download/v1.0.7-kt-mt/BotClient-Java-v1.0.7-kt-mt.jar" class="btn">Download for Java</a>
+    <a href="https://github.com/RMHSProgrammingClub/Bot-Client/releases/download/v1.0.7-kt-mt/BotClient-Kotlin-v1.0.7-kt-mt.jar" class="btn">Download for Kotlin</a>
+    <a href="doc/-bot-client/index.html" class="btn">Documentation</a>
+    <!--<a href="https://github.com/RMHSProgrammingClub/Bot-Client/zipball/master" class="btn">Download .zip</a>-->
+    <!--<a href="https://github.com/RMHSProgrammingClub/Bot-Client/tarball/master" class="btn">Download .tar.gz</a>-->
+</section>
 
-<h3>
-<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is it?</h3>
+<section class="main-content">
+    <h1>
+        <a id="botclient-kt" class="anchor" href="#botclient-kt" aria-hidden="true"><span aria-hidden="true"
+                                                                                          class="octicon octicon-link"></span></a>BotClient-Kt
+    </h1>
+    
+    <hr>
+    
+    <h3>
+        <a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span aria-hidden="true"
+                                                                                      class="octicon octicon-link"></span></a>What
+        is it?</h3>
+    
+    <p>This is the client for the BotServer that is compatible with java or other JVM languages. It is also the
+        recommended API. That means that this API will be the most stable and most quickly updated API when a new
+        version of the server is released.</p>
+    
+    <h3>
+        <a id="how-to-obtain" class="anchor" href="#how-to-obtain" aria-hidden="true"><span aria-hidden="true"
+                                                                                            class="octicon octicon-link"></span></a>How
+        to obtain</h3>
+    
+    <p>You can download compiled versions of this API here: <a
+            href="https://github.com/RMHSProgrammingClub/Bot-Game/releases">https://github.com/RMHSProgrammingClub/Bot-Game/releases</a>.
+        If you are modifying the client, or for some reason want to build it yourself, building instructions are below.
+    </p>
+    
+    <h3>
+        <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true"
+                                                                                      class="octicon octicon-link"></span></a>How
+        to use</h3>
+    
+    <p>Please reference the wiki for the documentation and in depth instructions on how to begin. Here: <a
+            href="https://github.com/RMHSProgrammingClub/Bot-Game/wiki">https://github.com/RMHSProgrammingClub/Bot-Game/wiki</a>
+    </p>
+    
+    <h3>
+        <a id="how-to-build" class="anchor" href="#how-to-build" aria-hidden="true"><span aria-hidden="true"
+                                                                                          class="octicon octicon-link"></span></a>How
+        to build</h3>
+    
+    <ul>
+        <li>Download / clone this repository</li>
+        <li>Unzip the repository if necessary</li>
+        <li>cd to the directory</li>
+        <li>run this command
+            
+            <ul>
+                <li>linux / osx - "./gradlew build"</li>
+                <li>windows - "./gradlew.bat build" (not tested, may not work)</li>
+            </ul>
+        </li>
+        <li>Yay! Your compiled client is now located under build/libs/</li>
+    </ul>
+    
+    <h3>
+        <a id="importing-into-intellij" class="anchor" href="#importing-into-intellij" aria-hidden="true"><span
+                aria-hidden="true" class="octicon octicon-link"></span></a>Importing into IntelliJ</h3>
+    
+    <ul>
+        <li>Download and install IntelliJ here: <a href="https://www.jetbrains.com/idea/">https://www.jetbrains.com/idea/</a>
+        </li>
+        <li>Download / clone this repository</li>
+        <li>In IntelliJ - to open the project:
+            
+            <ul>
+                <li>"Import Project"</li>
+                <li>Select the directory</li>
+                <li>"Import project from external model"</li>
+                <li>"Gradle"</li>
+                <li>Make sure "Use auto-import" and "Create directories for empty content roots automatically" are both
+                    checked
+                </li>
+                <li>Select "Use customizable gradle wrapper"</li>
+                <li>Select "Finish"</li>
+            </ul>
+        </li>
+        <li>Inside the project, under the "Gradle" sidebar:
+            
+            <ul>
+                <li>Manually refresh all gradle projects</li>
+                <li>Double click on Tasks/build/build</li>
+            </ul>
+        </li>
+        <li>Yay! Your compiled client is now located under build/libs/</li>
+    </ul>
+    
+    <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/RMHSProgrammingClub/Bot-Client">Bot-client</a> is maintained by <a
+                href="https://github.com/RMHSProgrammingClub">RMHSProgrammingClub</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a
+                href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+                href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
 
-<p>This is the client for the BotServer that is compatible with java or other JVM languages. It is also the recommended API. That means that this API will be the most stable and most quickly updated API when a new version of the server is released.</p>
+</section>
 
-<h3>
-<a id="how-to-obtain" class="anchor" href="#how-to-obtain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to obtain</h3>
 
-<p>You can download compiled versions of this API here: <a href="https://github.com/RMHSProgrammingClub/Bot-Game/releases">https://github.com/RMHSProgrammingClub/Bot-Game/releases</a>. If you are modifying the client, or for some reason want to build it yourself, building instructions are below.</p>
-
-<h3>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
-
-<p>Please reference the wiki for the documentation and in depth instructions on how to begin. Here: <a href="https://github.com/RMHSProgrammingClub/Bot-Game/wiki">https://github.com/RMHSProgrammingClub/Bot-Game/wiki</a></p>
-
-<h3>
-<a id="how-to-build" class="anchor" href="#how-to-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to build</h3>
-
-<ul>
-<li>Download / clone this repository</li>
-<li>Unzip the repository if necessary</li>
-<li>cd to the directory</li>
-<li>run this command 
-
-<ul>
-<li>linux / osx - "./gradlew build"</li>
-<li>windows - "./gradlew.bat build" (not tested, may not work)</li>
-</ul>
-</li>
-<li>Yay! Your compiled client is now located under build/libs/</li>
-</ul>
-
-<h3>
-<a id="importing-into-intellij" class="anchor" href="#importing-into-intellij" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Importing into IntelliJ</h3>
-
-<ul>
-<li>Download and install IntelliJ here: <a href="https://www.jetbrains.com/idea/">https://www.jetbrains.com/idea/</a>
-</li>
-<li>Download / clone this repository</li>
-<li>In IntelliJ - to open the project:
-
-<ul>
-<li>"Import Project"</li>
-<li>Select the directory</li>
-<li>"Import project from external model"</li>
-<li>"Gradle"</li>
-<li>Make sure "Use auto-import" and "Create directories for empty content roots automatically" are both checked</li>
-<li>Select "Use customizable gradle wrapper"</li>
-<li>Select "Finish"</li>
-</ul>
-</li>
-<li>Inside the project, under the "Gradle" sidebar:
-
-<ul>
-<li>Manually refresh all gradle projects</li>
-<li>Double click on Tasks/build/build</li>
-</ul>
-</li>
-<li>Yay! Your compiled client is now located under build/libs/</li>
-</ul>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/RMHSProgrammingClub/Bot-Client">Bot-client</a> is maintained by <a href="https://github.com/RMHSProgrammingClub">RMHSProgrammingClub</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+</body>
 </html>

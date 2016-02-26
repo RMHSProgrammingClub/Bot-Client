@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<title>Game - BotClient</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">BotClient</a>&nbsp;/&nbsp;<a href="../index.html">com.n9mtq4.botclient</a>&nbsp;/&nbsp;<a href=".">Game</a><br/>
+<br/>
+<h1>Game</h1>
+<code><span class="keyword">class </span><span class="identifier">Game</span></code><br/>
+<p>An object for the currently running game.</p>
+<p>Created by will on 11/24/15 at 3:14 PM.</p>
+<br/>
+<br/>
+<strong>Author</strong><br/>
+Will "n9Mtq4" Bresnahan<br/>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">Game</span><span class="symbol">(</span><span class="symbol">)</span></code><p>An object for the currently running game.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="current-compliance.html">currentCompliance</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">currentCompliance</span><span class="symbol">: </span><span class="identifier">String</span></code><p>The compliance level that this client is running at</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="server-version.html">serverVersion</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">serverVersion</span><span class="symbol">: </span><span class="identifier">String</span></code><p>The version of the server this client is connected to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="team.html">team</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">team</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Your team number.
+So far it is either 1 or 2</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="end-turn.html">endTurn</a></td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><span class="identifier">endTurn</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.Game$endTurn(com.n9mtq4.botclient.ControllableBot)/controllableBot">controllableBot</span><span class="symbol">:</span>&nbsp;<a href="../-controllable-bot/index.html"><span class="identifier">ControllableBot</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code><p>Ends your turn and writes the actions that your bot
+has done this turn to a file</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="invoke.html">invoke</a></td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-controllable-bot/index.html"><span class="identifier">ControllableBot</span></a></code><p>Kotlin method. Allows getting the bot like:</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="wait-for-turn.html">waitForTurn</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">waitForTurn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-controllable-bot/index.html"><span class="identifier">ControllableBot</span></a></code><p>Halts, waiting for input through the socket
+when it receives the Start turn command, it
+makes a bot for that turn and returns it</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

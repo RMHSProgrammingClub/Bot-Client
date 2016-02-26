@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<title>Bot - BotClient</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">BotClient</a>&nbsp;/&nbsp;<a href="../index.html">com.n9mtq4.botclient.world</a>&nbsp;/&nbsp;<a href=".">Bot</a><br/>
+<br/>
+<h1>Bot</h1>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Bot</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-world-object/index.html"><span class="identifier">WorldObject</span></a></code><br/>
+<p>A Bot in the world.</p>
+<p>Created by will on 11/24/15 at 5:31 PM.</p>
+<p>A bot object in the world.
+Has x, y, angle, and health</p>
+<br/>
+<br/>
+<h3>Parameters</h3>
+<a name="x"></a>
+<code>x</code> - the x pos<br/>
+<br/>
+<a name="y"></a>
+<code>y</code> - the y pos<br/>
+<br/>
+<a name="angle"></a>
+<code>angle</code> - the angle of the bot (degrees -360 to 360)<br/>
+<br/>
+<a name="health"></a>
+<code>health</code> - the health of the bot<br/>
+<br/>
+<a name="team"></a>
+<code>team</code> - the team number of the bot<br/>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">Bot</span><span class="symbol">(</span><span class="identifier" id="com.n9mtq4.botclient.world.Bot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Bot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Bot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/angle">angle</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Bot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/health">health</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier" id="com.n9mtq4.botclient.world.Bot$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/team">team</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span></code><p>A Bot in the world.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="angle.html">angle</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">angle</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the angle of the bot (degrees -360 to 360)</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="health.html">health</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">health</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the health of the bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="team.html">team</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">team</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the team number of the bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="x.html">x</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">x</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the x pos</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="y.html">y</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">y</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>the y pos</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="../-world-object/is-block.html">isBlock</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isBlock</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the object is a block.
+Will return false if the obstacle is
+a wall</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../-world-object/is-bot.html">isBot</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isBot</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the world object
+is a bot</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../-world-object/is-obstacle.html">isObstacle</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isObstacle</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the world object
+is a block (by extension also a wall)</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../-world-object/is-wall.html">isWall</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isWall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns true if the object is a wall
+Will return false if the obstacle is
+a block. (even though a wall is a block)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
