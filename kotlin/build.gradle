@@ -50,8 +50,9 @@ task fatJar(type: Jar) {
 }
 
 dokka {
-    outputFormat = "javadoc"
-    outputDirectory = "${project.buildDir.getPath()}/javadoc"
+    outputFormat = "html"
+    outputDirectory = "${project.buildDir.getPath()}/doc/html"
 }
 
 build.dependsOn fatJar
+build.dependsOn dokka

@@ -1,6 +1,8 @@
 package com.n9mtq4.botclient
 
 /**
+ * THE MAIN METHOD TO TEST THE API.
+ * 
  * Created by will on 11/24/15 at 3:14 PM.
  * 
  * DO NOT USE THIS FILE TO BASE YOUR BOT OFF OF.

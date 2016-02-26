@@ -10,10 +10,10 @@ import java.io.IOException
 * */
 
 /**
- * Created by will on 12/4/15 at 3:48 PM.
  * 
- * This exception is thrown when you don't have enough action points to
- * do something.
+ * This exception is thrown when you don't have enough action points to do something.
+ * 
+ * Created by will on 12/4/15 at 3:48 PM.
  * 
  * @param msg the msg
  * @author Will "n9Mtq4" Bresnahan
@@ -29,11 +29,10 @@ class NotEnoughActionPointsException(msg: String) : CantPerformActionException(m
 }
 
 /**
+ * This exception is thrown when you don't have enough mana points to do something.
+ * 
  * Created by will on 12/4/15 at 3:48 PM.
- *
- * This exception is thrown when you don't have enough mana points to
- * do something.
- *
+ * 
  * @author Will "n9Mtq4" Bresnahan
  */
 class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg) {
@@ -47,11 +46,11 @@ class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg
 }
 
 /**
- * Created by will on 12/21/15 at 8:40 PM.
- *
  * This exception is thrown when you can't perform an action.
  * The superclass for [NotEnoughActionPointsException] and
  * [NotEnoughManaPointsException].
+ * 
+ * Created by will on 12/21/15 at 8:40 PM.
  * 
  * @param msg the msg
  * @property msg the message

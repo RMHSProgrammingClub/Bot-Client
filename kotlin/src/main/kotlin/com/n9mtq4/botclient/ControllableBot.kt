@@ -11,11 +11,11 @@ import org.json.simple.parser.JSONParser
 import java.util.ArrayList
 
 /**
- * Created by will on 11/24/15 at 3:16 PM.
- * 
  * A bot that you can control.
  * These are received when you call [com.n9mtq4.botclient.Game.waitForTurn]
  * Not technically a part of the world.
+ * 
+ * Created by will on 11/24/15 at 3:16 PM.
  * 
  * @author Will "n9Mtq4" Bresnahan
  * 

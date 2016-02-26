@@ -2,6 +2,8 @@
 package com.n9mtq4.botclient
 
 /**
+ * Constants for the client and the server
+ * 
  * Created by will on 11/24/15 at 3:25 PM.
  * 
  * Contains constants used in the client (and server)

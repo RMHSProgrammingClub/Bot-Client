@@ -1,6 +1,8 @@
 package com.n9mtq4.botclient.world
 
 /**
+ * A flag in the world. Either capture or defend it.
+ * 
  * Created by will on 12/9/15 at 8:53 PM.
  * 
  * @param x the x pos of the bot

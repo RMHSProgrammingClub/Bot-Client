@@ -1,6 +1,8 @@
 package com.n9mtq4.botclient.world
 
 /**
+ * A Bot in the world.
+ * 
  * Created by will on 11/24/15 at 5:31 PM.
  * 
  * A bot object in the world.

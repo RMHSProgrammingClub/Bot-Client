@@ -1,9 +1,9 @@
 package com.n9mtq4.botclient.world
 
 /**
- * Created by will on 11/24/15 at 5:06 PM.
- * 
  * Stores the types of Obstacles/Blocks there are
+ * 
+ * Created by will on 11/24/15 at 5:06 PM.
  * 
  * @author Will "n9Mtq4" Bresnahan
  */

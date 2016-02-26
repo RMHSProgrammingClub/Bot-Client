@@ -1,6 +1,8 @@
 package com.n9mtq4.botclient.world
 
 /**
+ * The interface world WorldObjects
+ * 
  * Created by will on 11/24/15 at 5:08 PM.
  * 
  * Indicates if an object is in the world

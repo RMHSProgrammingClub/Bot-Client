@@ -8,9 +8,9 @@ import java.net.Socket
 import java.net.SocketException
 
 /**
- * Created by will on 11/27/15 at 11:16 PM.
- *
  * Handles all the client to server connections
+ * 
+ * Created by will on 11/27/15 at 11:16 PM.
  * 
  * @property port the port to connect to
  * @param port the port to connect to
