@@ -309,14 +309,14 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 				}else if (type.equals("block", true)) {
 //					blocks have health
 					val vhealth = (it["health"] as Long).toInt()
-					vision.add(Block(x, y, vhealth, true, BlockType.BLOCK))
+					vision.add(Block(vx, vy, vhealth, true, BlockType.BLOCK))
 				}else if (type.equals("wall", true)) {
 //					walls are generic
-					vision.add(Block(x ,y, 100, false, BlockType.WALL))
+					vision.add(Block(vx, vy, 100, false, BlockType.WALL))
 				}else if (type.equals("flag", true)) {
 //					flags have a team
 					val vteam = (it["team"] as Long).toInt()
-					vision.add(Flag(x, y, vteam))
+					vision.add(Flag(vx, vy, vteam))
 				}else {
 //					throw IOException("Error reading vision data:\n$data")
 					throw ClientNetworkException("Error reading vision", "vision data", data)
