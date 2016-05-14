@@ -18,7 +18,7 @@ import java.io.IOException
  * @param msg the msg
  * @author Will "n9Mtq4" Bresnahan
  */
-class NotEnoughActionPointsException(msg: String) : CantPerformActionException(msg) {
+class NotEnoughActionPointsException private constructor(msg: String) : CantPerformActionException(msg) {
 	/**
 	 * Generates a message based on [need], [have], and [action]
 	 * @param need the ap needed
@@ -35,7 +35,7 @@ class NotEnoughActionPointsException(msg: String) : CantPerformActionException(m
  * 
  * @author Will "n9Mtq4" Bresnahan
  */
-class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg) {
+class NotEnoughManaPointsException private constructor(msg: String) : CantPerformActionException(msg) {
 	/**
 	 * Generates a message based on [need], [have], and [action]
 	 * @param need the mana needed
@@ -56,7 +56,7 @@ class NotEnoughManaPointsException(msg: String) : CantPerformActionException(msg
  * @property msg the message
  * @author Will "n9Mtq4" Bresnahan
  */
-open class CantPerformActionException(val msg: String) : Exception(msg)
+open class CantPerformActionException protected constructor(val msg: String) : Exception(msg)
 
 /**
  * This exception is thrown when the game is ended
@@ -65,7 +65,7 @@ open class CantPerformActionException(val msg: String) : Exception(msg)
  * @property data the data of the end turn command
  * @author Will "n9Mtq4" Bresnahan
  * */
-class GameEnded(val data: String) : Exception("Game has ended with data: $data")
+class GameEnded internal constructor(val data: String) : Exception("Game has ended with data: $data")
 
 /**
  * This exception is thrown when the client gets wrong input from the server
@@ -76,4 +76,4 @@ class GameEnded(val data: String) : Exception("Game has ended with data: $data")
  * 
  * @author Will "n9Mtq4" Bresnahan
  * */
-class ClientNetworkException(msg: String, expected: String, actual: String) : IOException("$msg: EXPECTED: \"$expected\", GOT: \"$actual\"")
+class ClientNetworkException internal constructor(msg: String, expected: String, actual: String) : IOException("$msg: EXPECTED: \"$expected\", GOT: \"$actual\"")

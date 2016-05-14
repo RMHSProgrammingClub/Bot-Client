@@ -10,19 +10,19 @@ package com.n9mtq4.botclient
  * Asserts that the [condition] is true
  * */
 @Throws(AssertionError::class)
-fun assertTrue(condition: Boolean) = assertTrue(condition, "")
+internal fun assertTrue(condition: Boolean) = assertTrue(condition, "")
 /**
  * Asserts that the [condition] is true. if not, it
  * throws an [AssertionError] with the [msg]
  * */
 @Throws(AssertionError::class)
-fun assertTrue(condition: Boolean, msg: String) { if (!condition) throw AssertionError(msg) }
+internal fun assertTrue(condition: Boolean, msg: String) { if (!condition) throw AssertionError(msg) }
 /**
  * Asserts that the [antiCondition] is false. if not, it
  * throws an [AssertionError] with the [msg]
  * */
 @Throws(AssertionError::class)
-fun assertFalse(antiCondition: Boolean, msg: String) = assertTrue(!antiCondition, msg)
+internal fun assertFalse(antiCondition: Boolean, msg: String) = assertTrue(!antiCondition, msg)
 
 
 //BOT ASSERTS

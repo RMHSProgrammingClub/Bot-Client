@@ -7,7 +7,17 @@ package com.n9mtq4.botclient
  * This file contains dictionary keys. These can
  * be changed by calling:
  * ```kotlin
- * System.setProperties(PropertyDictionary.SOMETHING, "value")
+ * System.setProperty(PropertyDictionary.SOMETHING, "value")
+ * ```
+ * 
+ * Here are real life examples
+ * Setting the server compliance level:
+ * ```kotlin
+ * System.setProperty(PropertyDictionary.COMPLIANCE_LEVEL, "v1.0.5-beta")
+ * ```
+ * Setting the port to connect to to 34567:
+ * ```kotlin
+ * System.setProperty(PropertyDictionary.SERVER_PORT, "34567")
  * ```
  * 
  * Created by will on 2/1/16 at 8:54 PM.

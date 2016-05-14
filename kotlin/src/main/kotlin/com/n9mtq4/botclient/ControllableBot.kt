@@ -29,7 +29,7 @@ import java.util.ArrayList
  * @param actionPoints The number of action points the bot has
  * @param vision An array of [WorldObject]s that you can see
  */
-class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) {
+class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, actionPoints: Int, mana: Int, val vision: ArrayList<WorldObject>) : WorldObject {
 	
 	/**
 	 * The UID of the bot
@@ -43,12 +43,12 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 	/**
 	 * The x pos of the bot
 	 * */
-	var x = x
+	override var x = x
 		private set
 	/**
 	 * The y pos of the bot
 	 * */
-	var y = y
+	override var y = y
 		private set
 	/**
 	 * The angle in degrees of the bot
@@ -70,7 +70,7 @@ class ControllableBot(uid: Int, x: Int, y: Int, angle: Int, val health: Int, act
 	 * A list of all the actions that
 	 * will/did happen this turn
 	 * */
-	val turnLog: ArrayList<String>
+	internal val turnLog: ArrayList<String>
 	
 	/**
 	 * Constructor for [ControllableBot]

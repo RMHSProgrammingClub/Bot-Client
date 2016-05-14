@@ -102,7 +102,8 @@ class ServerConnection(val port: Int) {
 	
 	/**
 	 * Writes data to the server.
-	 *
+	 * 
+	 * @deprecated use writeWholeLog instead
 	 * @param msg the string to send
 	 * */
 	@Deprecated("Been replaced", ReplaceWith("writeWholeLog"))
@@ -115,6 +116,7 @@ class ServerConnection(val port: Int) {
 	 *
 	 * @param msg the turn log
 	 * */
+	@Throws(SocketException::class)
 	internal fun writeWholeLog(msg: List<String>) {
 		try {
 			msg.forEach { output.println(it) }

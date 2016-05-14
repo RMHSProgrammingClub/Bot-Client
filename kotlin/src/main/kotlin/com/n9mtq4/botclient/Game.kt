@@ -83,6 +83,7 @@ class Game() {
 	 * val bot = game()
 	 * ```
 	 * */
+	@Throws(ClientNetworkException::class, GameEnded::class)
 	operator fun invoke() = waitForTurn()
 	
 	/**
@@ -92,6 +93,7 @@ class Game() {
 	 * 
 	 * @return That turns bot
 	 * */
+	@Throws(ClientNetworkException::class, GameEnded::class)
 	fun waitForTurn(): ControllableBot {
 		
 		val command = connection.read()
@@ -136,7 +138,7 @@ class Game() {
 	 * */
 	private fun readAndMakeBot(): ControllableBot {
 		
-		var data = connection.read()
+		val data = connection.read()
 		return ControllableBot.buildBot(data)
 		
 	}
